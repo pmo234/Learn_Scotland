@@ -1,5 +1,5 @@
 import Header from '../components/header';
-import LandingPage from '../components/landingPage';
+import LandingPage from '../components/LandingPage';
 
 
 
