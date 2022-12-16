@@ -1,5 +1,10 @@
+
 import { useEffect, useState } from "react";
 const baseURL = "http://localhost:9000/api/questions/";
+
+import './App.css';
+import LearnScotlandContainer from "./containers/LearnScotlandContainer";
+
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -16,20 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LearnScotlandContainer />
     </div>
   );
 }
