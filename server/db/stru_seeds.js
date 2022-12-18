@@ -1,0 +1,170 @@
+use learn_scotland
+db.dropDatabase();
+
+db.questions.insertMany([
+  {
+    image: "",
+    question:
+      "John Logie Baird invented this in 1926. There are now over 1.5 billion around the world. What is it?",
+    correct: "television",
+    false1: "telephone",
+    false2: "telegram",
+    false3: "telescope",
+  },
+  {
+    image: "",
+    question:
+      "The telephone was invested by Scotsman Alexander Graham Bell in 1876. What was said on the first ever phone call?",
+    correct: "Mr Watson - come here - I want to see you",
+    false1: "Testing, testing, 123",
+    false2: "Can you hear me?",
+    false3: "What's up?",
+    info: "Not everyone agrees who invented the telephone. However, Alexander Graham Bell usually gets the credit. In 1876 he sent the first words by telephone. Later that year Bell made the first long-distance call. He talked with his assistant, who was 3.2 kilometers away. By 1915 people could place telephone calls across the United States. Telephone service across the Atlantic Ocean began in 1927. The first mobile phones appeared in the late 1970s.",
+  },
+  {
+    image: "",
+    question:
+      "It's a fact of life - everyone goes to the toilet, but what type of bend do you find on most modern loos?",
+    answer: "s",
+    false1: "b",
+    false2: "z",
+    false3: "u",
+    info: "Yes, Scots have really thought of everything - we can't poo without thinking of ways to perfect it. Flushing toilets have actually existed in some form for thousands of years - the ancient Stone Age site of Skara Brae on Scotland's Orkney Islands had one. However, it wasn't until 1755 when Scottish mechanic Alexander Cumming developed the 'S bend' - an invention still in use today. Without it life would be a lot smellier",
+  },
+  {
+    image: "",
+    question: "What's the image above?",
+    answer: "tyre",
+    false1: "snake skin",
+    false2: "leather handbag",
+    false3: "road",
+    info: "It's a tyre, like you find on every bike or car, and it was invented by a Scotsman. Yes, John Boyd Dunlop, who was born in Ayrshire gives his name to Dunlop tyres. Dunlop was actually a veterinary surgeon by trade, running a hugely successful practice, but it was his attempts to make pneumatic tyres for his son's tricycle that made him famous. Dunlop's invention was picked up by a group of cyclists, who instantly began winning races and the success of the design quickly spread.",
+  },
+  {
+    image: "",
+    question:
+      "This is the Scott monument in Edinburgh, but what was it built to celebrate?",
+    correct: "Sir Walter Scott",
+    false1: "Scott of the Antarctic",
+    false2: "Scotland winning the men's football World Cup",
+    false3: "Scottish independence",
+    info: "Sir Walter Scott is perhaps Scotland's most famous novelist. His books include Ivanhoe, Rob Roy, and Waverley (which Edinburgh's main train station is actually named after).",
+  },
+  {
+    image: "elephant house cafe",
+    question:
+      "What record breaking series of novels was partly written in this cafe? (Hint: You can see Edinburgh castle through the window)",
+    correct: "Harry Potter",
+    false1: "Narnia",
+    false2: "Mr Men & Little Miss",
+    false3: "His Dark Materials",
+    info: "Yes it's Harry Potter, and the castle inspired Hogwarts itself. JK Rowling now lives in the city, which has been her adopted home for more than 20 years. Many other locations in Scotland influenced the books and films.",
+  },
+  {
+    image: "",
+    question:
+      "Which of these mythical beast is actually the national animal of Scotland?",
+    correct: "Unicorn",
+    false1: "Dragon",
+    false2: "The Loch Ness Monster",
+    false3: "Griffin",
+    info: "It's a unicorn and it can actually be seen on Scotland's royal coat of arms. We know that it has been a symbol of the country since at least the 1500s.",
+  },
+  {
+    image: "lines on a golf club",
+    question: "Say what you see",
+    correct: "Golf club",
+    false1: "Microphone",
+    false2: "Toaster",
+    false: "Shoe",
+    info: "It's a golf club. The sport was invented in the country, and St Andrews (a city on the east coast) is now known as the home of golf, although Leith may dispute that. There are now 587 courses scattered across the nation.",
+  },
+  {
+    image: "tunnocks",
+    question:
+      "This is a Tunnock's teacake, a Scottish treat. It is made up of biscuit, chocolate and what else?",
+    correct: "Marshmallow",
+    false1: "Jam",
+    false2: "Haggis",
+    false3: "Peanut butter",
+    info: "Quintessentially Scottish, Tunnock's teacakes are filled with marshmallow. The bakery that makes them was established in 1890, but it wasn't until 1956 that this product was born. The company is also well known for other delicious items like their caramel wafer.",
+  },
+  {
+    image: "tweed",
+    question:
+      "Scotland if famous for it's fabrics - jute from Dundee, tartan from the Highlands, but what island is famous for making tweed?",
+    correct: "Harris",
+    false1: "Lewis",
+    false2: "Bara",
+    false3: "Islay",
+  },
+  {
+    image: "map showing distance from top to bottom",
+    question:
+      "Scotland measures roughly 730km long at it's longest point, but which group of islands are it's most northerly?",
+    correct: "Shetland Isles",
+    false1: "Inner Hebrides",
+    false2: "Outer Hebrides",
+    false3: "Orkney islands",
+    info: "Yup the Shetland Isles, and they are in fact closer to Oslo in Norway than they are to London. Scotland actually has over 900 islands, of which only about 100 are inhabited.",
+  },
+  {
+    image: "Ben Nevis",
+    question:
+      "Scotland's, and in fact the United Kingdom's tallest mountain is Ben Nevis, but whereabouts is it?",
+    correct: "image1",
+    false1: "image2",
+    false2: "image3",
+    false3: "image4",
+    info: "Ben Nevis stands 1345m tall, and is the highest point for 700km around. It was once an active volcano, and it's name can be translate as 'venomous mountain'. The summit is reached by over 150,000 hikers a year, and in 1911 the Ford company even drove a car to the top.",
+  },
+  {
+    image: "can we play song?",
+    question:
+      "Scotland's national anthem is 'Flower of Scotland'. Can you name the flower, and what instrument might you expect it to be played on?",
+    correct: "Thistle and bagpipes",
+    false1: "Rose and piano",
+    false2: "Daffodil and harp",
+    false3: "Orchid and guitar",
+    info: "Thistles and bagpipes, what could be more Scottish? The songs lyrics refer to the victory of the Scots, led by Robert I, over Edward II of England at the Battle of Bannockburn in 1314",
+  },
+  {
+    image: "loch photo",
+    question:
+      "In Scotland, lakes are often known as Lochs, and the country has some huge ones, but can you pick the deepest one?",
+    correct: "Loch Morar",
+    false1: "Loch Ness",
+    false2: "Loch Lomond",
+    false3: "Loch Muick",
+    info: "It's Loch Morar, with a depth of 328m, but it's not the biggest. Loch Lomond is the longest, and Loch Ness is the biggest by volume - it needs to be to give Nessy somewhere to hide!",
+  },
+  {
+    image: "",
+    question:
+      "This dandy is James VI of Scotland, who went on to become James I of England too. He is celebrated every year in the UK on what date?",
+    correct: "5th November",
+    false1: "25th December",
+    false2: "31st October",
+    false3: "4th July",
+    info: "On Bonfire Night, 5th November, the UK celebrates the failure of the plot to destroy parliament, and kill James I. The plotters were foiled, captured, and convicted, the most famous of which is Guy Fawkes.",
+  },
+  {
+    image: "",
+    question:
+      "Scotland has a gruesome and grizzly facet to it's history. Perhaps one of it's most shocking moments is when Queen Elizabeth I of England ordered the death of her cousin Mary Queen of Scots, but which of these items belonged to her?",
+    correct: "the penecuik jewels image",
+    false1: "",
+    false2: "",
+    false3: "",
+    info: "These are the Penicuik Jewels, that are thought to have belonged to Mary. Mary, although Queen of the Scots, actually spent most of her life either in France or England.",
+  },
+  {
+    image: "",
+    question: "The world's oldest what, can be found in Stirling castle?",
+    correct: "Football",
+    false1: "Suit of armour",
+    false2: "Golf ball",
+    false3: "Tree",
+    info: "Yes it's a football. It is believed to date from the 16th century, and may have belonged to Mary Queen of Scots. England may claim football's coming home, but Scots might claim otherwise.",
+  },
+]);
