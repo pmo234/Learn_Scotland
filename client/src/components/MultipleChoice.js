@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
+import Header from "../components/Header";
 import "./MultipleChoice.css";
-import Counter from "./Counter.js";
-const MultipleChoice = ({ questions }) => {
+
+// import Counter from "./Counter.js";
+const MultipleChoice = ({ multiquestions }) => {
   const [score, setScore] = useState(0);
   // const [result, setResult] = useState();
   const [totalLen, setTotalLen] = useState();
@@ -20,16 +22,16 @@ const MultipleChoice = ({ questions }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
 
   useEffect(() => {
-    if (questions && questions[0]) {
+    if (multiquestions && multiquestions[0]) {
       getPercent();
     }
-  }, [questions]);
+  }, [multiquestions]);
 
   const getPercent = () => {
-    setResultStat(questions[questionNumber].statistics);
-    setTotalLen(questions[questionNumber].statistics.length);
-    setQuestionLen(questions.length);
-    // const totalLen = questions[questionNumber].statistics.length;
+    setResultStat(multiquestions[questionNumber].statistics);
+    setTotalLen(multiquestions[questionNumber].statistics.length);
+    setQuestionLen(multiquestions.length);
+    // const totalLen = multiquestions[questionNumber].statistics.length;
     const count = {};
     resultStat.forEach((element) => {
       count[element] = (count[element] || 0) + 1;
@@ -45,17 +47,17 @@ const MultipleChoice = ({ questions }) => {
     const tempScore = score;
     let tempRes;
     console.log(ev);
-    if (ev.target.value !== questions[questionNumber].answer) {
+    if (ev.target.value !== multiquestions[questionNumber].answer) {
       score <= 0 ? setScore(0) : setScore(tempScore - 1);
-      if (ev.target.value === questions[questionNumber].wrongAnswer1) {
+      if (ev.target.value === multiquestions[questionNumber].wrongAnswer1) {
         tempRes = "two";
         setResultButton2Class("btn wrong");
       }
-      if (ev.target.value === questions[questionNumber].wrongAnswer2) {
+      if (ev.target.value === multiquestions[questionNumber].wrongAnswer2) {
         tempRes = "three";
         setResultButton3Class("btn wrong");
       }
-      if (ev.target.value === questions[questionNumber].wrongAnswer3) {
+      if (ev.target.value === multiquestions[questionNumber].wrongAnswer3) {
         tempRes = "four";
         setResultButton4Class("btn wrong");
       }
@@ -66,11 +68,11 @@ const MultipleChoice = ({ questions }) => {
     }
     // setResult(tempRes);
     setToggle(!toggle);
-    // setResultStat([...questions[questionNumber].statistics, tempRes]);
-    const tempArray = [...questions[questionNumber].statistics, tempRes];
+    // setResultStat([...multiquestions[questionNumber].statistics, tempRes]);
+    const tempArray = [...multiquestions[questionNumber].statistics, tempRes];
 
     setResultStat(tempArray);
-    const tempTotalLen = questions[questionNumber].statistics.length;
+    const tempTotalLen = multiquestions[questionNumber].statistics.length;
     const count = {};
     tempArray.forEach((element) => {
       count[element] = (count[element] || 0) + 1;
@@ -83,17 +85,17 @@ const MultipleChoice = ({ questions }) => {
     }
     setPercentArray(tempPerArray);
   };
-  // setUserAnsweredQuestions({
-  //   ...userAnsweredQuestions,
+  // setUserAnsweredmultiquestions({
+  //   ...userAnsweredmultiquestions,
   //   [ev.target._id]: result,
   // });
 
-  // setUserAnsweredQuestions(([ev.target._id] = result));
+  // setUserAnsweredmultiquestions(([ev.target._id] = result));
 
   // updateUserRecord({
   //   userScore: score,
-  //   answeredQuestions: userAnsweredQuestions,
-  // maybe add how many questions left
+  //   answeredmultiquestions: userAnsweredmultiquestions,
+  // maybe add how many multiquestions left
   // add which question is wrong and write for statistics
   // });
   //   setResult("");
@@ -131,7 +133,7 @@ const MultipleChoice = ({ questions }) => {
     setResultButton4Class("btn");
   };
 
-  const questionsList = questions.map((question, index) => {
+  const multiquestionsList = multiquestions.map((question, index) => {
     return (
       <>
         <div key={index}>
@@ -193,7 +195,11 @@ const MultipleChoice = ({ questions }) => {
   });
 
   return (
+    <>
+            <Header />
+
     <div className="background">
+
       {/* // <div 
     //   id="ex1"
     //   className="backgroundContainer"
@@ -201,7 +207,7 @@ const MultipleChoice = ({ questions }) => {
     // >
     //   <div ref={ref} id="ex1-layer" className="background">*/}
       <div className={container}>
-        <div>{questionsList[questionNumber]}</div>
+        <div>{multiquestionsList[questionNumber]}</div>
         <div className="controls">
           <button className="again-btn btnMenu" onClick={handleStartAgain}>
             Start Again
@@ -226,7 +232,7 @@ const MultipleChoice = ({ questions }) => {
             {questionNumber + 1} / {questionLen}
           </p>
 
-          <Counter handleNextQuestion={handleNextQuestion} />
+          {/* <Counter handleNextQuestion={handleNextQuestion} /> */}
         </div>
       </div>
       <div className={startContainer}>
@@ -235,6 +241,7 @@ const MultipleChoice = ({ questions }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
