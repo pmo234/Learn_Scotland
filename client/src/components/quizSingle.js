@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from "../components/Header";
 import styled from 'styled-components';
 
 // comment for no reason
@@ -15,7 +16,7 @@ const QuizSingle = () => {
       }, []);
 
     const getItems = () => {
-        fetch("http://localhost:9000/api/questions/")
+        fetch("http://localhost:9000/api/singlequestions")
             .then((response) => response.json())
             .then((response) => {
             const questionsAll = response.map(res => res.question)
@@ -64,6 +65,7 @@ const QuizSingle = () => {
 
     return (
         <>
+        <Header />
         <QuizTitle>20 Questions!</QuizTitle>
 
         <QuizContainer id="quizContainer">

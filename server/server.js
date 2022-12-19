@@ -37,6 +37,26 @@ MongoClient.connect("mongodb://127.0.0.1:27017", { useUnifiedTopology: true })
   })
   .catch(console.error);
 
+
+  MongoClient.connect("mongodb://127.0.0.1:27017", { useUnifiedTopology: true })
+  .then((client) => {
+    const db = client.db("learn_scotland");
+    const usersCollection = db.collection("singlequestions");
+    const usersRouter = createRouter(usersCollection);
+    app.use("/api/singlequestions", usersRouter);
+  })
+  .catch(console.error);
+
+
+  MongoClient.connect("mongodb://127.0.0.1:27017", { useUnifiedTopology: true })
+  .then((client) => {
+    const db = client.db("learn_scotland");
+    const usersCollection = db.collection("multiquestions");
+    const usersRouter = createRouter(usersCollection);
+    app.use("/api/multiquestions", usersRouter);
+  })
+  .catch(console.error);
+
 app.listen(9000, function () {
   console.log("App running on port 9000");
 });
