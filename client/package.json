@@ -6,13 +6,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "leaflet": "^1.9.3",
     "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.5.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "styled": "^1.0.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
@@ -40,15 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.20",
-    "tailwindcss": "^3.2.4"
-  },
-  "browser": {
-    "fs": false,
-    "os": false,
-    "path": false
   }
 }
