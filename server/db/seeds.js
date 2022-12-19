@@ -269,3 +269,15 @@ db.forum.insertMany([
         "image":"This is an image"
     }
 ]);
+
+db.users.insertMany([
+
+    {
+        "name":"Peter",
+        "from":"Belfast",
+    },
+    {
+        "name":"David",
+        "from":"Derby",
+    }
+]);
