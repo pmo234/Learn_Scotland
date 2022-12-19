@@ -6,14 +6,15 @@ function App() {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    getQuestions();
+    getQuestions()
   }, []);
 
   const getQuestions = () => {
     return fetch(baseURL)
       .then((response) => response.json())
-      .then((data) => setQuestions(data));
+      .then((data) => setQuestions(data))
   };
+
 
   return (
     <div className="App">
