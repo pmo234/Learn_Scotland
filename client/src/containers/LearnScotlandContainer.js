@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "../components/Header";
+import QuizSingleContainer from "./quizSingleContainer";
 import LandingPage from "../components/LandingPage";
 import Trial from "../components/Trial";
 
@@ -9,6 +9,7 @@ const LearnScotlandContainer = () => {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/quizSingle" element={<QuizSingleContainer/>} />
           <Route path="/trial" element={<Trial />} />
         </Routes>
       </Router>
