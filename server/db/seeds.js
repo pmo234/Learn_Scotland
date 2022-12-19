@@ -10,6 +10,14 @@ db.questions.insertMany([
     {
         "question":"What is the national animal of Scotland?",
         "answer":"Unicorn",
+    },
+    {
+        "question":"What is the national animal of Scotland?",
+        "answer":"Unicorn",
+    },
+    {
+        "question":"What is the national animal of Scotland?",
+        "answer":"Unicorn",
     }
 ]);
 
