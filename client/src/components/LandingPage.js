@@ -57,12 +57,6 @@ const LandingPage = () => {
           Let's quiz
         </button>
       </form>
-      <Link
-        to="/trial"
-        className="relative z-30 p-3 text-xl text-white bg-purple-300 bg-opacity-50 rounded m-5"
-      >
-        See what you know
-      </Link>
       <video
         className="absolute w-auto min-w-full min-h-full max-w-none"
         autoPlay
