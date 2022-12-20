@@ -5,12 +5,13 @@ import { useEffect,useState } from 'react';
 const baseURL1 = "http://localhost:9000/api/users/";
 
 
+
 export default function Home() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getUsers();
   }, []);
-
+  
     const getUsers = () => {
         return fetch(baseURL1)
           .then((res) => res.json())
@@ -25,3 +26,4 @@ export default function Home() {
     </div>
   );
 }
+

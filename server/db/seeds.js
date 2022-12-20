@@ -188,20 +188,6 @@ db.questions.insertMany([
 ]);
 
 
-
-db.users.insertMany([
-
-    {
-        "name":"Peter",
-        "from":"Belfast",
-    },
-    {
-        "name":"David",
-        "from":"Derby",
-    }
-]);
-
-
 db.multiquestions.insertMany([
 
     {
