@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function Leaderboard(props) {
+  console.log(props)
+  const [currUser, setCurrUser] = useState()
   const [listToSort, setListToSort] = useState([]);
   const [listToSort2, setListToSort2] = useState([]);
   const [listToSort3, setListToSort3] = useState([]);
@@ -132,7 +134,7 @@ export default function Leaderboard(props) {
 
       <h1>Quiz 2 Leaderboard {displayLeaderboard2}</h1>
       <Link to="/multiplechoice">
-        <QuizLink>Take Quiz 2</QuizLink>
+      <QuizLink>Take Quiz 2</QuizLink>
       </Link>
 
       <h1>Quiz 3 Leaderboard {displayLeaderboard3}</h1>
