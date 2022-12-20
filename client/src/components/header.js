@@ -24,7 +24,7 @@ const Header = () => {
             <A href="/dragndrop">Drag n Drop</A>
           </List>
           <List>
-            <A href="#">Forum</A>
+            <A href="/forum">Forum</A>
           </List>
         </UnorderedList>
       </HeaderTwo>

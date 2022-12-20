@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import LandingPage from "../components/LandingPage";
-import Leaderboard from "../components/Leaderboard";
+import Header from "./components/Header";
+import LandingPage from "./components/LandingPage";
+import Leaderboard from "./components/Leaderboard";
 const baseURL1 = "http://localhost:9000/api/users/";
+import Forum from "./Forum";
 
 const LearnScotlandContainer = () => {
   const [currUser, setCurrUser] = useState(null);
