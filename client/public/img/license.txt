@@ -1,0 +1,11 @@
+Model Information:
+* title:	James Young Simpson Monument
+* source:	https://sketchfab.com/3d-models/james-young-simpson-monument-c7eb6100a5f041dfb701947017dc2a66
+* author:	Menhir (https://sketchfab.com/bernaciak.pawel)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "James Young Simpson Monument" (https://sketchfab.com/3d-models/james-young-simpson-monument-c7eb6100a5f041dfb701947017dc2a66) by Menhir (https://sketchfab.com/bernaciak.pawel) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

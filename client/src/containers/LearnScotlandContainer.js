@@ -6,9 +6,6 @@ import MultiQuestion from "../components/MultipleChoice";
 import DragNDrop from "../components/QuizDragNDrop";
 import Home from "./Home";
 
-
-
-
 const LearnScotlandContainer = () => {
   return (
     <>
@@ -16,7 +13,7 @@ const LearnScotlandContainer = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/singlechoice" element={<SingleQuestion/>} />
+          <Route path="/singlechoice" element={<SingleQuestion />} />
           <Route path="/multiplechoice" element={<MultiQuestion />} />
           <Route path="/dragndrop" element={<DragNDrop />} />
         </Routes>
