@@ -21,10 +21,10 @@ const Header = () => {
             <A href="/singlechoice">Single choice Quiz</A>
           </List>
           <List>
-            <A href="/dragndrop">Drap n Drop</A>
+            <A href="/dragndrop">Drag n Drop</A>
           </List>
           <List>
-            <A href="/">Forum</A>
+            <A href="#">Forum</A>
           </List>
         </UnorderedList>
       </HeaderTwo>

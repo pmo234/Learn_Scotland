@@ -40,10 +40,10 @@ const QuizSingle = () => {
       ).innerHTML = `${answer} is correct. Well done!`;
       document.getElementById("displayScore").innerHTML = `${score}`;
 
-      if (score === 2) {
+      if (score === 5) {
         document.getElementById(
           "displayCorrect"
-        ).innerHTML = `20 CORRECT ANSWERS!!!`;
+        ).innerHTML = `5 CORRECT ANSWERS!!!`;
         e.target.value = "Congratulations!";
       } else {
         setTimeout(function () {
@@ -57,7 +57,7 @@ const QuizSingle = () => {
           setQuestion(questionList[index + 1]);
           setAnswer(answerList[index + 1]);
           document.getElementById("displayCorrect").innerHTML = ``;
-        }, 3500);
+        }, 3000);
       }
     }
   };
@@ -65,7 +65,7 @@ const QuizSingle = () => {
   return (
     <>
       <Header />
-      <QuizTitle>20 Questions!</QuizTitle>
+      <QuizTitle>Five Questions!</QuizTitle>
 
       <QuizContainer id="quizContainer">
         <QuestionBox>
@@ -109,6 +109,7 @@ const QuizContainer = styled.section`
 const QuizTitle = styled.h1`
   color: darkblue;
   font-size: 3vw;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
   height: 4vw;
   margin: auto;
   margin-top: 1%;
@@ -137,11 +138,13 @@ const Form = styled.form`
 
 const H3 = styled.h3`
   font-size: 2vw;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   text-align: center;
 `;
 
 const InputAnswer = styled.input`
   border-radius: 1vw;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   font-size: 2vw;
   height: 70%;
   padding-left: 0.8vw;
@@ -161,6 +164,7 @@ const DisplayCorrect = styled.h1`
 
 const DisplayScore = styled.h3`
   font-size: 5vw;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
   color: darkred;
   text-align: right;
   margin-right: 3vw;
