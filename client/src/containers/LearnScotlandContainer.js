@@ -4,6 +4,12 @@ import LandingPage from "./components/LandingPage";
 import Leaderboard from "./components/Leaderboard";
 const baseURL1 = "http://localhost:9000/api/users/";
 import Forum from "./Forum";
+const baseURL1 = "http://localhost:9000/api/users/";
+// const getUsersState [usersData, setUsersData] = useState([]);
+
+
+
+
 
 const LearnScotlandContainer = () => {
   const [currUser, setCurrUser] = useState(null);

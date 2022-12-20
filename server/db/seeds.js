@@ -314,6 +314,8 @@ db.users.insertMany([
         "score2":90,
         "score3":80,
         "score4":70,
+        "comment":"This is a picture of something a found 0",
+        "image":"This is an image"
 
     },
     {
@@ -323,6 +325,8 @@ db.users.insertMany([
         "score2":100,
         "score3":40,
         "score4":80,
+        "comment":"This is a picture of something a found 1",
+        "image":"This is an image"
     },
     {
         "name":"Struan",
@@ -331,6 +335,8 @@ db.users.insertMany([
         "score2":90,
         "score3":90,
         "score4":10,
+        "comment":"This is a picture of something a found 2",
+        "image":"This is an image"
     },
     {
         "name":"Misha",
@@ -339,6 +345,8 @@ db.users.insertMany([
         "score2":70,
         "score3":70,
         "score4":70,
+        "comment":"This is a picture of something a found 3",
+        "image":"This is an image"
     },
     {
         "name":"Jamie",
@@ -347,6 +355,8 @@ db.users.insertMany([
         "score2":0,
         "score3":40,
         "score4":100,
+        "comment":"This is a picture of something a found 5",
+        "image":"This is an image"
 
     }
 ]);
