@@ -255,7 +255,11 @@ db.singlequestions.insertMany([
     {
         "question":"What is the tallest mountain in Scotland?",
         "answer":"Ben Nevis",
-    }
+    },
+    {
+      "question":"In which county can you find Aberdeen?",
+      "answer":"Aberdeenshire",
+  }
 ]);
     
 db.forum.insertMany([

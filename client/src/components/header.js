@@ -14,8 +14,8 @@ const Header = () => {
                     <List><A href="/home">Home</A></List>
                     <List><A href="/multiplechoice">Multiple Choice Quiz</A></List>
                     <List><A href="/singlechoice">Single choice Quiz</A></List>
-                    <List><A href="/dragndrop">Drap n Drop</A></List>
-                    <List><A href="/">Forum</A></List>
+                    <List><A href="/dragndrop">Drag n Drop</A></List>
+                    <List><A href="#">Forum</A></List>
                 </UnorderedList>
             </HeaderTwo>
         </HeaderContainer>
