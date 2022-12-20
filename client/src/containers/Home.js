@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Leaderboard users={users}/>
+      <Leaderboard users={users} />
     </div>
   );
 }
