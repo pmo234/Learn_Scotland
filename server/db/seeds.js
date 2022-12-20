@@ -38,7 +38,7 @@ db.users.insertMany([
     {
         "name":"Peter",
         "from":"Belfast",
-        "score1":100,
+        "score1":10,
         "score2":90,
         "score3":80,
         "score4":70,
@@ -66,6 +66,14 @@ db.users.insertMany([
         "score2":70,
         "score3":70,
         "score4":70,
+    },
+    {
+        "name":"Jamie",
+        "from":"Bonnyrigg",
+        "score1":10,
+        "score2":0,
+        "score3":40,
+        "score4":100,
     }
     
 ]);
