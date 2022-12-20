@@ -6,12 +6,12 @@ import {
   TileLayer,
   useMapEvents,
 } from "react-leaflet";
-import { Link } from "react-router-dom";
 
 const Map = () => {
   const [position, setPosition] = useState(null);
   const [correct, setCorrect] = useState(null);
   const benPos = { lat: 56.7969, lng: -5.0036 };
+  
 
   function LocationMarker() {
     const map = useMapEvents({
@@ -50,7 +50,9 @@ const Map = () => {
       {correct === false && position ? (
         <>
           <p>Unlucky pal</p>
-          <form action="/trial"><button type="submit">try again</button></form>
+          <form action="/trial">
+            <button type="submit">try again</button>
+          </form>
         </>
       ) : null}
     </>

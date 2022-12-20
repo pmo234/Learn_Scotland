@@ -27,7 +27,7 @@ const LandingPage = () => {
     };
     postUser(formData);
     e.preventDefault();
-    navigate("/mapQ");
+    navigate("/home");
     setUser(e.target.nameInput.value);
   };
 
