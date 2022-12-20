@@ -18,15 +18,19 @@
   height: 100vh;
   justify-content: center;
   align-items: center; 
+   /* background-image: url("../assets/images/saltire.svg"); */
+   /* client/src/assets/images/saltire.svg */
+  /* background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 105% 110%;  */
   /* background-image: url("./saltire.svg");
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  /* background-size: 105% 110%; 
-  background-image: url("./saltire.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; */
-  background-color: hsl(var(--hue),100%,20%);
+  /* background-color: hsl(var(--hue),100%,20%);  */
+  background: linear-gradient(to right top, hsl(var(--hue),100%,20%), #6cd);
+  /* background: linear-gradient(to right top, #5dafb8, #6cd); */
+  /* background-color: #5dafb8; */
 }
 
 /* .backgroundContainer{
@@ -45,13 +49,12 @@
 
 .container{
   width: 60vw;
-  /* display : flex;
-  flex-direction: column;
-  justify-content: center; */
+
+  text-align: center;
   /* min-width: 130%; */
   /* max-width: 180%; */
   /* background: linear-gradient(to right top, hsl(var(--hue),100%,20%), #6cd); */
-  background-color: white;
+  background-color: #5dafb8;
   border-radius: 5px;
   padding:10px;
   box-shadow: 0 0 10px 5px;
@@ -59,12 +62,17 @@
 
 .btn-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, 1fr);
+
+  /* grid-column-gap: -50px; */
+  grid-row-gap: 30px;
+  text-align: center;
   gap: 10px; 
-  margin: 20px 0;
+  margin: 30px 60px;
 }
 .btn{
   /* padding: 5px 10px; */
+  border: 2px solid hsl(var(--hue), 100%, 30%);
   background-color: hsl(var(--hue));
   display: flex;
   justify-content:space-around;
@@ -87,11 +95,14 @@
 
 .btn.correct {
   --hue: var(--hue-correct);
+  border: 2px solid cadetblue;
+
   /* color: black; */
 }
 
 .btn.wrong {
   --hue: var(--hue-wrong);
+  border: 2px solid hsl(var(--hue), 100%, 30%);
 }
 
 .start-btn, .next-btn, .again-btn {
@@ -159,4 +170,14 @@
 
 .hide{
   display: none;
+}
+
+.product-canvas {
+  width: 35vw;
+  height: 38vh;
+  background:white;
+  /* box-shadow:  10px 15px 15px 6px #3891b4; */
+  border-radius: 0px;
+  margin-bottom:20px
+
 }
