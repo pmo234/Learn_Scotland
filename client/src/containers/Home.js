@@ -21,6 +21,7 @@ export default function Home() {
   return (
     <div>
       <Header />
+      <Leaderboard users={users}/>
     </div>
   );
 }
