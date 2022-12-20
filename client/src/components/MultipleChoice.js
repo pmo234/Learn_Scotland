@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import Header from "./Header";
 import "./MultipleChoice.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+// import { OrbitControls, useGLTF } from "@react-three/drei";
 // import Counter from "./Counter.js";
 const MultipleChoice = () => {
   const [score, setScore] = useState(0);
