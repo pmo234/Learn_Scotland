@@ -5,7 +5,8 @@ import styled from "styled-components";
 
 
 // comment for no reason
-const QuizSingle = () => {
+const QuizSingle = (props) => {
+  console.log(props);
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);

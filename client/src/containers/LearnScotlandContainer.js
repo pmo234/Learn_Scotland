@@ -5,6 +5,7 @@ import SingleQuestion from "../components/quizSingle";
 import MultiQuestion from "../components/MultipleChoice";
 import DragNDrop from "../components/QuizDragNDrop";
 import Home from "./Home";
+import Forum from "./Forum";
 
 const LearnScotlandContainer = () => {
   return (
@@ -16,6 +17,7 @@ const LearnScotlandContainer = () => {
           <Route path="/singlechoice" element={<SingleQuestion />} />
           <Route path="/multiplechoice" element={<MultiQuestion />} />
           <Route path="/dragndrop" element={<DragNDrop />} />
+          <Route path="/forum" element={<Forum />} />
         </Routes>
       </Router>
     </>
