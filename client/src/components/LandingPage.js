@@ -1,17 +1,15 @@
 import React from "react";
 import lochVideo from "../assets/videos/Loch35630.mp4";
 import highCath from "../assets/music/high_cath.mp3";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const userURL = "http://localhost:9000/api/users";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const postUser = (payload) => {
-    console.log(payload);
-    console.log("postuser");
     return fetch(userURL, {
       method: "POST",
       body: JSON.stringify(payload),
@@ -20,14 +18,12 @@ const LandingPage = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log(userURL);
-    console.log(e.target.nameInput.value);
     const formData = {
-      userName: e.target.nameInput.value,
+      name: e.target.nameInput.value,
     };
     postUser(formData);
-    e.preventDefault();
-    navigate("/home");
+    // e.preventDefault();
+    props.changeFirst()
     setUser(e.target.nameInput.value);
   };
 

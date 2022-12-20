@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "../components/index";
-import SingleQuestion from "../components/quizSingle";
-import MultiQuestion from "../components/MultipleChoice";
-import DragNDrop from "../components/QuizDragNDrop";
-import Home from "./Home";
+import Header from "./components/Header";
+import LandingPage from "./components/LandingPage";
+import Leaderboard from "./components/Leaderboard";
+const baseURL1 = "http://localhost:9000/api/users/";
 import Forum from "./Forum";
 const baseURL1 = "http://localhost:9000/api/users/";
 // const getUsersState [usersData, setUsersData] = useState([]);
@@ -14,28 +12,37 @@ const baseURL1 = "http://localhost:9000/api/users/";
 
 
 const LearnScotlandContainer = () => {
+  const [currUser, setCurrUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
+
   useEffect(() => {
     getUsers();
   }, []);
-  
-    const getUsers = () => {
-        return fetch(baseURL1)
-          .then((res) => res.json())
-          .then((results) => setUsers(results));
-      };
-  return (
+
+  const changeFirst = () => {
+    setFirstLoad(false);
+  };
+
+  // ? this is the user that was last added i.e. the current user
+  useEffect(() => {
+    if (users && users[0]) {
+      setCurrUser(users[users.length - 1].userName);
+    }
+  }, [users]);
+
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));
+  };
+ 
+  return firstLoad ? (
+    <LandingPage changeFirst={changeFirst} />
+  ) : (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/singlechoice" element={<SingleQuestion />} />
-          <Route path="/multiplechoice" element={<MultiQuestion />} />
-          <Route path="/dragndrop" element={<DragNDrop />} />
-          <Route path="/forum" element={<Forum users={users}/>} />
-        </Routes>
-      </Router>
+      <Header />
+      <Leaderboard users={users}/>
     </>
   );
 };

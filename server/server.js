@@ -17,17 +17,20 @@ MongoClient.connect("mongodb://127.0.0.1:27017", { useUnifiedTopology: true })
     const forumCollection = db.collection("forum");
     const usersCollection = db.collection("users");
     const singleQCollection = db.collection("singlequestions");
-    const MultiQCollection = db.collection("multiquestions");
+    const multiQCollection = db.collection("multiquestions");
+    const mapQCollection = db.collection("mapquestions");
     const questionsRouter = createRouter(questionsCollection);
     const forumRouter = createRouter(forumCollection);
     const usersRouter = createRouter(usersCollection);
     const singleQRouter = createRouter(singleQCollection);
-    const MultiQRouter = createRouter(MultiQCollection);
+    const multiQRouter = createRouter(multiQCollection);
+    const mapQRouter = createRouter(mapQCollection)
     app.use("/api/questions", questionsRouter);
     app.use("/api/forum", forumRouter);
     app.use("/api/users", usersRouter);
     app.use("/api/singlequestions", singleQRouter);
-    app.use("/api/multiquestions", MultiQRouter);
+    app.use("/api/multiquestions", multiQRouter);
+    app.use("/api/mapquestions", mapQRouter)
   })
   .catch(console.error);
 
