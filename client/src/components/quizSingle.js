@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from "../components/Header";
+import Header from "./Header";
 import styled from 'styled-components';
 
 // comment for no reason

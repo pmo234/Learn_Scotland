@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import {Link } from "react-router-dom";
 
 export default function Leaderboard(props) {
   const [listToSort, setListToSort] = useState([]);
@@ -102,14 +103,26 @@ export default function Leaderboard(props) {
 
   return (
     <QuizContainer>
+
       <h1>Quiz 1 Leaderboard {displayLeaderboard}</h1>
+      <Link to ="/singlechoice">
       <QuizLink>Take Quiz 1</QuizLink>
+      </Link>
+
       <h1>Quiz 2 Leaderboard {displayLeaderboard2}</h1>
+      <Link to ="/multiplechoice">
       <QuizLink>Take Quiz 2</QuizLink>
+      </Link>
+
+      
       <h1>Quiz 3 Leaderboard {displayLeaderboard3}</h1>
+      <Link to ="/dragndrop">
       <QuizLink>Take Quiz 3</QuizLink>
+      </Link>
+
       <h1>Quiz 4 Leaderboard {displayLeaderboard4}</h1>
       <QuizLink>Take Quiz 4</QuizLink>
+
     </QuizContainer>
   );
 }

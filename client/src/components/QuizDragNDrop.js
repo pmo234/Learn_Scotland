@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Header from "../components/Header";
+import Header from "./Header";
 
 
 const QuizDragDrop = () => {
