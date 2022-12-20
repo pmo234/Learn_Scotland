@@ -11,10 +11,10 @@ const Header = () => {
             </HeaderOne>
             <HeaderTwo>
                 <UnorderedList>
-                    <List><A href="/">Home</A></List>
-                    <List><A href="/">Quizzes</A></List>
-                    <List><A href="/">More Quizzes</A></List>
-                    <List><A href="/">Facts</A></List>
+                    <List><A href="/home">Home</A></List>
+                    <List><A href="/multiplechoice">Multiple Choice Quiz</A></List>
+                    <List><A href="/singlechoice">Single choice Quiz</A></List>
+                    <List><A href="/dragndrop">Drap n Drop</A></List>
                     <List><A href="/">Forum</A></List>
                 </UnorderedList>
             </HeaderTwo>
