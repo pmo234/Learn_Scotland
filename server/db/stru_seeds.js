@@ -71,7 +71,8 @@ db.questions.insertMany([
     info: "It's a unicorn and it can actually be seen on Scotland's royal coat of arms. We know that it has been a symbol of the country since at least the 1500s.",
   },
   {
-    image: "lines on a golf club",
+    image: "../../src/assets/images/Golf_clubs_zoom.jpeg",
+    image2: "../../src/assets/images/Golf_clubs.jpg",
     question: "Say what you see",
     correct: "Golf club",
     false1: "Microphone",

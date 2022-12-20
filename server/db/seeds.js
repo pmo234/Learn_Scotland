@@ -18,7 +18,17 @@ db.questions.insertMany([
     {
         "question":"What is the national animal of Scotland?",
         "answer":"Unicorn",
-    }
+    },
+    {
+        image: "../../src/assets/images/Golf_clubs_zoom.jpeg",
+        image2: "../../src/assets/images/Golf_clubs.jpg",
+        question: "Say what you see",
+        correct: "Golf club",
+        false1: "Microphone",
+        false2: "Toaster",
+        false: "Shoe",
+        info: "It's a golf club. The sport was invented in the country, and St Andrews (a city on the east coast) is now known as the home of golf, although Leith may dispute that. There are now 587 courses scattered across the nation.",
+      },
 ]);
 
 db.forum.insertMany([

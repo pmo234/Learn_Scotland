@@ -1,6 +1,5 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./MultipleChoice.css";
-import Counter from "./Counter.js";
 const MultipleChoice = ({ questions }) => {
   const [score, setScore] = useState(0);
   // const [result, setResult] = useState();
@@ -225,8 +224,6 @@ const MultipleChoice = ({ questions }) => {
           <p>
             {questionNumber + 1} / {questionLen}
           </p>
-
-          <Counter handleNextQuestion={handleNextQuestion} />
         </div>
       </div>
       <div className={startContainer}>

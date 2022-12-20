@@ -6,7 +6,7 @@ export default function Leaderboard(props) {
 
   useEffect(() => {
     setListToSort([props.users]);
-    setListofScores([props.users[0].score1, props.users[0].score2,props.users[0].score3, props.users[0].score4]);
+    // setListofScores([props.users[0].score1, props.users[0].score2,props.users[0].score3, props.users[0].score4]);
     
   }, [props.users]);
 
