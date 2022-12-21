@@ -3,7 +3,7 @@ import Header from "./Navbar";
 import styled from "styled-components";
 
 
-const QuizSingle = () => {
+const QuizSingle = (props) => {
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -12,9 +12,27 @@ const QuizSingle = () => {
   const [timer, setTimer] = useState(15);
   const [start, setStart] = useState(false);
   const [score, setScore] = useState(1);
+  const [user,setUser] = useState(props?.users[props.users.length-1])
+  const [users, setUsers] = useState([]);
+  const userURL = "http://localhost:9000/api/users/";
+  const baseURL1 = "http://localhost:9000/api/users/";
 
   useEffect(() => {
     getItems();
+  }, []);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+  
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));}
+  
+  useEffect(() => {
+    setUser(props?.users[props.users.length-1])
+    console.log(user)
   }, []);
 
 
@@ -111,15 +129,34 @@ const QuizSingle = () => {
     }
   };
 
+  const postScore = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      score2: score-1,
+    };
+    console.log(users[users.length] - 1)
+    postScore(users[users.length - 1]._id, formData);
+  };
+
   return (
     <>
       <Header />
+      <Body>
       <QuizTitle>How Many Questions!</QuizTitle>
 
       <ScoreBox>
         <Timer>Timer</Timer>
         <Seconds id="timer">{timer}</Seconds>
         <Button onClick={startTimer}>Start</Button>
+        <Button onClick={handleSubmit}>Leaderboard</Button>
       </ScoreBox>
 
       <QuizContainer id="quizContainer">
@@ -146,11 +183,13 @@ const QuizSingle = () => {
         <DisplayScore id="displayScore">0</DisplayScore>
         {/* <p>{answer}</p> */}
       </QuizContainer>
+      </Body>
     </>
   );
 };
 
 const QuizContainer = styled.section`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   height: 33vw;
   width: 65%;
   margin: auto;
@@ -167,9 +206,9 @@ const QuizTitle = styled.h1`
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   height: 4vw;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 2vw;
-  padding-top: 0.5vw;
+  margin-top: 0%;
+  margin-bottom: 6vw;
+  padding-top: 3vw;
   text-align: center;
   width: 50%;
 `;
@@ -229,6 +268,7 @@ const DisplayScore = styled.h3`
 `;
 
 const ScoreBox = styled.div`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-radius: 5px;
   color: darkred;
@@ -268,9 +308,12 @@ const Button = styled.button`
   height: 3vw;
   padding: 2px;
   width: 5vw;
-
 `;
 
+const Body = styled.body`
+  background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
+  height: 100vh;
+`
 
 
 export default QuizSingle;

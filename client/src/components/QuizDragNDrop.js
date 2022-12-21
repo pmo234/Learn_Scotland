@@ -81,6 +81,7 @@ const QuizDragDrop = () => {
   return (
     <>
       <Header />
+      <Body>
       {answeredCorrectly ? (
         <Success id="success">Success!</Success>
       ) : (
@@ -137,6 +138,7 @@ const QuizDragDrop = () => {
           <Place id="drop5" onDrop={drop} onDragOver={allowDrop}></Place>
         </EndBlock>
       </QuizContainer>
+      </Body>
     </>
   );
 };
@@ -194,6 +196,7 @@ const Place = styled.div`
 `;
 
 const QuizContainer = styled.section`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-width: 0.5vw;
   border-radius: 2vw;
@@ -211,9 +214,9 @@ const QuizTitle = styled.h1`
   font-size: 3vw;
   height: 4vw;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 2vw;
-  padding-top: 0.5vw;
+  margin-top: 0%;
+  margin-bottom: 6vw;
+  padding-top: 3vw;
   text-align: center;
   width: 50%;
 `;
@@ -227,19 +230,20 @@ const Instructions = styled.h3`
 `;
 
 const Success = styled.h1`
-  color: red;
+  color: darkred;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   font-size: 3vw;
   height: 4vw;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 2vw;
-  padding-top: 0.5vw;
+  margin-top: 0%;
+  margin-bottom: 6vw;
+  padding-top: 3vw;
   text-align: center;
   width: 50%;
 `;
 
 const ScoreBox = styled.div`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-radius: 5px;
   color: red;
@@ -269,6 +273,11 @@ const Paragraph = styled.p`
   font-size: 1vw;
   height: 1vw;
   margin-bottom: 1vw;
+`;
+
+const Body = styled.body`
+  background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
+  height: 100vh;
 `;
 
 export default QuizDragDrop;

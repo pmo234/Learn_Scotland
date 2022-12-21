@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Navbar.js";
-import { redirect } from "react-router-dom";
+import styled from "styled-components";
 import {
   CircleMarker,
   MapContainer,
@@ -22,7 +22,6 @@ const Map = (props) => {
   const [user, setUser] = useState(null);
   
   useEffect(() => {
-    getQuestions()
     getUsers();
     if (users.length !== 0){
       console.log(users[users.length - 1])
@@ -68,7 +67,7 @@ const Map = (props) => {
   const questionList = questions?.map((question) => {
     return (
       <>
-        <div className="flex m-3 align-middle justify-center ">
+        <Div className="flex m-3 align-middle justify-center ">
           <MapContainer
             center={[56.8169, -4.1826]}
             doubleClickZoom={false}
@@ -90,15 +89,15 @@ const Map = (props) => {
             ) : null}
             <LocationMarker />
           </MapContainer>
-        </div>
-        <div className="flex align-middle justify-center gap-3 m-3">
+        </Div>
+        <Div className="flex align-middle justify-center gap-3 m-3">
           <img
             className="w-1/5 border-solid border-blue-900 border-4"
             src={question.img}
             alt="tree"
           />
           <h3>{question.question}</h3>
-        </div>
+        </Div>
         {answered ? (
           <div className="flex m-10 flex-col">
             <p>{question.info}</p>
@@ -138,20 +137,33 @@ const Map = (props) => {
   return questionList && counter < 5 ? (
     <>
       <Header />
+      <Body>
+
       {questionList[counter]}
+      </Body>
     </>
   ) : (
     <>
       <Header />
+      <Body>
       <p>{score} out of 5</p>
-          <button
-            className="bg-blue-900 rounded py-1 px-2 text-white "
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+      <button
+        className="bg-blue-900 rounded py-1 px-2 text-white "
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
     </>
   );
 };
+
+const Body = styled.body`
+  background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
+  height: 100vh;
+`;
+
+const Div = styled.div`
+  margin-top: 0;
+`
 
 export default Map;
