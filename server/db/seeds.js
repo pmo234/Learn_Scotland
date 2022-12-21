@@ -3,7 +3,7 @@ db.dropDatabase()
 
 db.questions.insertMany([
   {
-    image: "",
+    image: "https://pbs.twimg.com/media/EeBWO97VoAMZm3W.jpg",
     question:
       "John Logie Baird invented this in 1926. There are now over 1.5 billion around the world. What is it?",
     answer: "television",
@@ -13,7 +13,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
+    image: "https://cdn.britannica.com/19/180119-138-29F20103/Overview-invention-telephone-focus-work-Alexander-Graham.jpg",
     question:
       "The telephone was invested by Scotsman Alexander Graham Bell in 1876. What was said on the first ever phone call?",
     answer: "Mr Watson - come here - I want to see you",
@@ -35,7 +35,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
+    image: "https://www.nms.ac.uk/media/127235/curator-alison-patterson-with-dunlop-tyre-header.jpg?anchor=center&mode=crop&width=1920&height=800&rnd=132925220670000000",
     question: "What's the image above?",
     answer: "tyre",
     false1: "snake skin",
@@ -45,7 +45,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
+    image: "https://i2-prod.dailyrecord.co.uk/incoming/article21336654.ece/ALTERNATES/s615/0_JS203970484.jpg",
     question:
       "This is the Scott monument in Edinburgh, but what was it built to celebrate?",
     answer: "Sir Walter Scott",
@@ -56,7 +56,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "elephant house cafe",
+    image: "https://scontent-lcy1-1.xx.fbcdn.net/v/t31.18172-8/1506197_269767449848280_904406115_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=eegXT75U4GEAX923kT_&_nc_ht=scontent-lcy1-1.xx&oh=00_AfCXUy-jGPNx3UNSn0EKSre7Iq4uLQLlvXkJ8rXdkCLjIw&oe=63CA728B",
     question:
       "What record breaking series of novels was partly written in this cafe? (Hint: You can see Edinburgh castle through the window)",
     answer: "Harry Potter",
@@ -78,7 +78,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "lines on a golf club",
+    image: "https://golf.com/wp-content/uploads/2022/02/VPM2-1856-Wall.jpg",
     question: "Say what you see",
     answer: "Golf club",
     false1: "Microphone",
@@ -88,7 +88,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "tunnocks",
+    image: "https://i.guim.co.uk/img/media/afe2e3719e81e5a5da0d0319d1e31347fb95dcd4/0_78_4616_2771/master/4616.jpg?width=620&quality=45&dpr=2&s=none",
     question:
       "This is a Tunnock's teacake, a Scottish treat. It is made up of biscuit, chocolate and what else?",
     answer: "Marshmallow",
@@ -99,7 +99,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "tweed",
+    image: "https://www.masterclass.com/cdn-cgi/image/width=1920,quality=75,format=webp/https://images.ctfassets.net/3s5io6mnxfqz/4bOtAKNWHtuj0qKVfy9kwT/b372869f15f26dc94eb0ac7fd8d6c02c/AdobeStock_174850669.jpeg",
     question:
       "Scotland if famous for it's fabrics - jute from Dundee, tartan from the Highlands, but what island is famous for making tweed?",
     answer: "Harris",
@@ -108,8 +108,11 @@ db.questions.insertMany([
     false3: "Islay",
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
+
+
+
   {
-    image: "map showing distance from top to bottom",
+    image: "https://www.freeworldmaps.net/europe/united-kingdom/scotland/scotland-physical-map.jpg",
     question:
       "Scotland measures roughly 730km long at it's longest point, but which group of islands are it's most northerly?",
     answer: "Shetland Isles",
@@ -119,30 +122,30 @@ db.questions.insertMany([
     info: "Yup the Shetland Isles, and they are in fact closer to Oslo in Norway than they are to London. Scotland actually has over 900 islands, of which only about 100 are inhabited.",
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
+//   {
+//     image: "Ben Nevis",
+//     question:
+//       "Scotland's, and in fact the United Kingdom's tallest mountain is Ben Nevis, but whereabouts is it?",
+//     answer: "image1",
+//     false1: "image2",
+//     false2: "image3",
+//     false3: "image4",
+//     info: "Ben Nevis stands 1345m tall, and is the highest point for 700km around. It was once an active volcano, and it's name can be translate as 'venomous mountain'. The summit is reached by over 150,000 hikers a year, and in 1911 the Ford company even drove a car to the top.",
+//     statistics: ["one", "two", "three", "one", "three", "one", "one"],
+//   },
+//   {
+//     image: "can we play song?",
+//     question:
+//       "Scotland's national anthem is 'Flower of Scotland'. Can you name the flower, and what instrument might you expect it to be played on?",
+//     answer: "Thistle and bagpipes",
+//     false1: "Rose and piano",
+//     false2: "Daffodil and harp",
+//     false3: "Orchid and guitar",
+//     info: "Thistles and bagpipes, what could be more Scottish? The songs lyrics refer to the victory of the Scots, led by Robert I, over Edward II of England at the Battle of Bannockburn in 1314",
+//     statistics: ["one", "two", "three", "one", "three", "one", "one"],
+//   },
   {
-    image: "Ben Nevis",
-    question:
-      "Scotland's, and in fact the United Kingdom's tallest mountain is Ben Nevis, but whereabouts is it?",
-    answer: "image1",
-    false1: "image2",
-    false2: "image3",
-    false3: "image4",
-    info: "Ben Nevis stands 1345m tall, and is the highest point for 700km around. It was once an active volcano, and it's name can be translate as 'venomous mountain'. The summit is reached by over 150,000 hikers a year, and in 1911 the Ford company even drove a car to the top.",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
-    image: "can we play song?",
-    question:
-      "Scotland's national anthem is 'Flower of Scotland'. Can you name the flower, and what instrument might you expect it to be played on?",
-    answer: "Thistle and bagpipes",
-    false1: "Rose and piano",
-    false2: "Daffodil and harp",
-    false3: "Orchid and guitar",
-    info: "Thistles and bagpipes, what could be more Scottish? The songs lyrics refer to the victory of the Scots, led by Robert I, over Edward II of England at the Battle of Bannockburn in 1314",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
-    image: "loch photo",
+    image: "https://www.historic-uk.com/wp-content/uploads/2017/04/loch-ness-monster-2800x1440.jpg",
     question:
       "In Scotland, lakes are often known as Lochs, and the country has some huge ones, but can you pick the deepest one?",
     answer: "Loch Morar",
@@ -153,7 +156,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
+    image: "https://www.royal.uk/sites/default/files/images/encyclopaedia/editrs164498_401186-lpr_0.jpg",
     question:
       "This dandy is James VI of Scotland, who went on to become James I of England too. He is celebrated every year in the UK on what date?",
     answer: "5th November",
@@ -175,7 +178,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
+    image: "https://i2-prod.mirror.co.uk/incoming/article22359600.ece/ALTERNATES/s1200d/0_Castle1.jpg",
     question: "The world's oldest what, can be found in Stirling castle?",
     answer: "Football",
     false1: "Suit of armour",
