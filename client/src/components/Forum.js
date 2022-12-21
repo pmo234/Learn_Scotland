@@ -6,11 +6,26 @@ import styled from "styled-components";
 const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
-  const [userName, setUserName] = useState(props.currUser);
+  const [userName, setUserName] = useState([]);
   const [users, setUsers] = useState(props.users);
   const [newC, setNewC] = useState(false)
-  
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+  
+  const getUsers = () => {
+    return fetch(userURL)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));}
+  
+  useEffect(() => {
+    setUser(props?.users[props.users.length-1])
+    console.log(user)
+  }, []);
+
+  
   const postComment = (id, payload) => {
     return fetch(userURL + id, {
       method: "PUT",
@@ -18,9 +33,11 @@ export default function Forum(props) {
       headers: { "Content-Type": "application/json" },
     }).then((res) => res.json());
   };
-
+  // console.log(users)
   const commentList = users.map((user, index) => {
-    return user.comments ? (
+    // console.log(user.name)
+    // console.log(user.comments)
+    return user.comments.length !==0 ? (
       <>
         <li key={index}>
           <p>{user.name}</p>
@@ -29,17 +46,27 @@ export default function Forum(props) {
       </>
     ) : null;
   });
-
+  
   const handleSubmit = (event) => {
+    console.log(event.target[0].value);
+    console.log(users[users.length-1].comments)
     event.preventDefault();
-    const newComments = users[users.length-1].comments.push(event.target[0].value);
+    const newComments1 = users[users.length-1].comments;
+    const newComments2 = newComments1.push(event.target[0].value);
     const changedC = !newC
+    console.log(newComments1)
+    console.log(newComments2)
     const formData = {
-      comments: newComments,
+      comments: newComments1,
     };
     postComment(users[users.length - 1]._id, formData);
     setNewC(changedC)
   };
+  
+  useEffect(()=>{
+    setUsers(users)
+    console.log(props.users)
+  },[users])
 
   return (
     <div>
