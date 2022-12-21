@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  console.log(props)
+
   return (
     <HeaderContainer>
       <HeaderOne>
@@ -12,19 +13,22 @@ const Header = (props) => {
       <HeaderTwo>
         <UnorderedList>
           <List>
-            <A href="/leaderboard">Leaderboards</A>
+            <Link to="/">Leaderboards</Link>
           </List>
           <List>
-            <A href="/multiplechoice">Multiple Choice Quiz</A>
+            <Link to="/multiplechoice">Multiple Choice Quiz</Link>
           </List>
           <List>
-            <A href="/singlechoice">Single choice Quiz</A>
+            <Link to="/mapquiz">Map Quiz</Link>
           </List>
           <List>
-            <A href="/dragndrop">Drag n Drop</A>
+            <Link to="/singlechoice">Single choice Quiz</Link>
           </List>
           <List>
-            <A href="/forum">Forum</A>
+            <Link to="/dragndrop">Drag n Drop</Link>
+          </List>
+          <List>
+            <Link to="/forum">Forum</Link>
           </List>
           <h1>user: {props.currUser}</h1>
         </UnorderedList>

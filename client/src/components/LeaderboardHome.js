@@ -13,7 +13,6 @@ const Leaderboard = (props) => {
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
   //   const [displayLeaderboard, setDisplayLeaderboard] = useState([]);
-  console.log(props.users);
 
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
@@ -50,8 +49,6 @@ const Leaderboard = (props) => {
     setListToSort2(newSortedList2);
     setListToSort3(newSortedList3);
     setListToSort4(newSortedList4);
-
-    
   }, []);
 
   useEffect(() => {
@@ -130,8 +127,6 @@ const Leaderboard = (props) => {
       </li>
     ):null
   });
-  // console.log(props.users)
-  console.log(props.currUser);
 
   return (
     <QuizContainer>

@@ -4,21 +4,16 @@ import LandingPage from "../components/LandingPage";
 import Leaderboard from "../components/LeaderboardHome";
 
 const LearnScotlandContainer = (props) => {
-  const [firstLoad, setFirstLoad] = useState(true);
 
-  const changeFirst = () => {
-    setFirstLoad(false);
-  };
-
-  return firstLoad ? (
+  return props.firstLoad ? (
     <LandingPage
-      changeFirst={changeFirst}
+      changeFirst={props.changeFirst}
       currUser={props.currUser}
       setCurrUser={props.setCurrUser}
     />
   ) : (
     <>
-      <Header currUser={props.currUser} />
+      <Header currUser={props.currUser} changeFirst={props.changeFirst}/>
       <Leaderboard
         users={props.users}
         currUser={props.currUser}

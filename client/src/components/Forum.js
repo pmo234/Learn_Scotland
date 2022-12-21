@@ -1,25 +1,27 @@
 import React from "react";
 import Header from "./Navbar";
 import { useState, useEffect } from "react";
-const userURL = "http://localhost:9000/api/users";
+const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
   const [userName, setUserName] = useState("");
+  const [users, setUsers] = useState(props.users);
+  const [userComments, setUserComments] = useState(props.users[props.users.length - 1].comments)
 
-  const postComment = (payload) => {
-    return fetch(userURL, {
-      method: "POST",
+  const postComment = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" },
     }).then((res) => res.json());
   };
 
-  const commentList = props.users.map((item, index) => {
-    return item.comment ? (
+  const commentList = users.map((user, index) => {
+    return user.comments ? (
       <>
         <li key={index}>
-          {item.name}
-          {item.comment}
+          <p>{user.name}</p>
+          <p>{user.comments}</p>
         </li>
       </>
     ) : null;
@@ -30,25 +32,17 @@ export default function Forum(props) {
     //   if (userName == props.users[props.users.length-1].name) return
     else {
       setUserName(props.users[props.users.length - 1].name);
-      console.log(props.users);
     }
   }, [commentList]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setUsers([
-      ...props.users,
-      {
-        name: props.users[props.users.length - 1].name,
-        comment: event.target[0].value,
-      },
-      // console.log(props.users)
-    ]);
+    const newComments = userComments.push(event.target[0].value);
+    setUserComments(newComments)
     const formData = {
-      name: props.users[props.users.length - 1].name,
-      comment: event.target[0].value,
+      comments: newComments,
     };
-    postComment(formData);
+    postComment(props.users[props.users.length - 1]._id, formData);
   };
 
   return (
