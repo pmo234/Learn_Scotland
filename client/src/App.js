@@ -63,7 +63,7 @@ function App() {
           <Route
             path="/forum"
             element={
-              <Forum users={users} setUsers={setUsers} currUser={currUser} />
+              <Forum users={users} setUsers={setUsers} currUser={currUser} getUsers={getUsers}/>
             }
           />
         </Routes>

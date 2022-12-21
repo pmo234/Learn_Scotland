@@ -1,25 +1,42 @@
 import React from "react";
 import Header from "./Navbar";
 import { useState, useEffect } from "react";
-const userURL = "http://localhost:9000/api/users";
+const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
   const [userName, setUserName] = useState("");
-
-  const postComment = (payload) => {
-    return fetch(userURL, {
-      method: "POST",
+  const [user, setUser] = useState()
+  
+  useEffect(() => {
+    if (props.users)
+    {setUser(props.users[props.users.length-1])}
+  }, [props.users])
+  
+  // useEffect(() => {
+  //   first
+  
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+  
+  
+  console.log(user)
+  
+  const postComment = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" },
     }).then((res) => res.json());
   };
 
   const commentList = props.users.map((item, index) => {
-    return item.comment ? (
+    return item.comments ? (
       <>
         <li key={index}>
-          {item.name}
-          {item.comment}
+          <p>{item.name}</p>
+          <p>{item.comments}</p>
         </li>
       </>
     ) : null;
@@ -30,25 +47,17 @@ export default function Forum(props) {
     //   if (userName == props.users[props.users.length-1].name) return
     else {
       setUserName(props.users[props.users.length - 1].name);
-      console.log(props.users);
     }
   }, [commentList]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setUsers([
-      ...props.users,
-      {
-        name: props.users[props.users.length - 1].name,
-        comment: event.target[0].value,
-      },
-      // console.log(props.users)
-    ]);
+    const newComments = props.users[props.users.length - 1].comments;
+    newComments.push(event.target[0].value);
     const formData = {
-      name: props.users[props.users.length - 1].name,
-      comment: event.target[0].value,
+      comments: newComments,
     };
-    postComment(formData);
+    postComment(props.users[props.users.length - 1]._id, formData);
   };
 
   return (
