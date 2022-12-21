@@ -5,24 +5,9 @@ const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
   const [userName, setUserName] = useState("");
-  const [user, setUser] = useState()
-  
-  useEffect(() => {
-    if (props.users)
-    {setUser(props.users[props.users.length-1])}
-  }, [props.users])
-  
-  // useEffect(() => {
-  //   first
-  
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
-  
-  
-  console.log(user)
-  
+  const [users, setUsers] = useState(props.users);
+  const [userComments, setUserComments] = useState(props.users[props.users.length - 1].comments)
+
   const postComment = (id, payload) => {
     return fetch(userURL + id, {
       method: "PUT",
@@ -31,12 +16,12 @@ export default function Forum(props) {
     }).then((res) => res.json());
   };
 
-  const commentList = props.users.map((item, index) => {
-    return item.comments ? (
+  const commentList = users.map((user, index) => {
+    return user.comments ? (
       <>
         <li key={index}>
-          <p>{item.name}</p>
-          <p>{item.comments}</p>
+          <p>{user.name}</p>
+          <p>{user.comments}</p>
         </li>
       </>
     ) : null;
@@ -52,8 +37,8 @@ export default function Forum(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newComments = props.users[props.users.length - 1].comments;
-    newComments.push(event.target[0].value);
+    const newComments = userComments.push(event.target[0].value);
+    setUserComments(newComments)
     const formData = {
       comments: newComments,
     };

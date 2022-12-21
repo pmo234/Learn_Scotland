@@ -11,10 +11,15 @@ const baseURL1 = "http://localhost:9000/api/users/";
 function App() {
   const [currUser, setCurrUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
     getUsers();
   }, []);
+  
+  const changeFirst = () => {
+    setFirstLoad(false);
+  };
 
   // ? this is the user that was last added i.e. the current user
   // useEffect(() => {
@@ -40,6 +45,8 @@ function App() {
                 currUser={currUser}
                 users={users}
                 setCurrUser={setCurrUser}
+                changeFirst={changeFirst}
+                firstLoad={firstLoad}
               />
             }
           />
