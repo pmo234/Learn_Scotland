@@ -12,6 +12,8 @@ const Leaderboard = (props) => {
   const [inOrder3, setInOrder3] = useState([]);
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
+
+  console.log(props.users)
   
 
   useEffect(() => {
