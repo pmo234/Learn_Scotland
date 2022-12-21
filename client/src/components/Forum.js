@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(props.currUser);
   const [users, setUsers] = useState(props.users);
-  const [userComments, setUserComments] = useState(props.users[props.users.length - 1].comments)
+  const [newC, setNewC] = useState(false)
+  
 
   const postComment = (id, payload) => {
     return fetch(userURL + id, {
@@ -27,22 +28,15 @@ export default function Forum(props) {
     ) : null;
   });
 
-  useEffect(() => {
-    if (props.users.length === 0) return;
-    //   if (userName == props.users[props.users.length-1].name) return
-    else {
-      setUserName(props.users[props.users.length - 1].name);
-    }
-  }, [commentList]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newComments = userComments.push(event.target[0].value);
-    setUserComments(newComments)
+    const newComments = users[users.length-1].comments.push(event.target[0].value);
+    const changedC = !newC
     const formData = {
       comments: newComments,
     };
-    postComment(props.users[props.users.length - 1]._id, formData);
+    postComment(users[users.length - 1]._id, formData);
+    setNewC(changedC)
   };
 
   return (

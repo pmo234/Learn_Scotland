@@ -4,7 +4,6 @@ import LandingPage from "../components/LandingPage";
 import Leaderboard from "../components/LeaderboardHome";
 
 const LearnScotlandContainer = (props) => {
-
   return props.firstLoad ? (
     <LandingPage
       changeFirst={props.changeFirst}
@@ -14,7 +13,7 @@ const LearnScotlandContainer = (props) => {
     />
   ) : (
     <>
-      <Header currUser={props.currUser} changeFirst={props.changeFirst}/>
+      <Header currUser={props.currUser} changeFirst={props.changeFirst} />
       <Leaderboard
         users={props.users}
         currUser={props.currUser}

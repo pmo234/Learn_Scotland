@@ -13,24 +13,24 @@ const Header = (props) => {
       <HeaderTwo>
         <UnorderedList>
           <List>
-            <Link to="/">Leaderboards</Link>
+            <Link className="text-white" to="/">Leaderboards</Link>
           </List>
           <List>
-            <Link to="/multiplechoice">Multiple Choice Quiz</Link>
+            <Link className="text-white" to="/multiplechoice">Multiple Choice Quiz</Link>
           </List>
           <List>
-            <Link to="/mapquiz">Map Quiz</Link>
+            <Link className="text-white" to="/mapquiz">Map Quiz</Link>
           </List>
           <List>
-            <Link to="/singlechoice">Single choice Quiz</Link>
+            <Link className="text-white" to="/singlechoice">Single choice Quiz</Link>
           </List>
           <List>
-            <Link to="/dragndrop">Drag n Drop</Link>
+            <Link className="text-white" to="/dragndrop">Drag n Drop</Link>
           </List>
           <List>
-            <Link to="/forum">Forum</Link>
+            <Link className="text-white" to="/forum">Forum</Link>
           </List>
-          <h1>user: {props.currUser}</h1>
+          <h1 className="text-white">{props.currUser}</h1>
         </UnorderedList>
       </HeaderTwo>
     </HeaderContainer>
