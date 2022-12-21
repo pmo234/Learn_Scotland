@@ -118,7 +118,7 @@ const QuizDragDrop = () => {
 const StartBlock = styled.div`
   float: left;
   height: 90%;
-  margin-left: 12%;
+  margin-left: 13%;
   margin-top: 4%;
   width: 25%;
 `;

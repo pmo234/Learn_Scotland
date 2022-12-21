@@ -28,6 +28,12 @@ const QuizSingle = () => {
       });
   };
 
+  window.addEventListener('keydown',function(e){
+    if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){
+      if(e.target.nodeName=='INPUT' && e.target.type=='text'){
+        e.preventDefault();
+        return false;}}},true);
+
   const onChange = (e) => {
     formData[e.target.value] = e.target.value;
     setFormData(formData);
@@ -39,10 +45,14 @@ const QuizSingle = () => {
       document.getElementById("displayCorrect").innerHTML = `${answer} is correct. Well done!`;
       document.getElementById("displayScore").innerHTML = `${score}`;
 
-      if (score === 5) {
+
+
+      if (score === 20) {
         document.getElementById("displayCorrect").innerHTML = `5 CORRECT ANSWERS!!!`;
         e.target.value = "Congratulations!";
       } 
+
+
       else {
         setTimeout(function () {
           e.target.value = "Next question...";
@@ -63,7 +73,7 @@ const QuizSingle = () => {
   return (
     <>
       <Header />
-      <QuizTitle>Five Questions!</QuizTitle>
+      <QuizTitle>How Many Questions!</QuizTitle>
 
       <ScoreBox>
         <Timer>Timer</Timer>
@@ -94,7 +104,7 @@ const QuizSingle = () => {
 
         <DisplayCorrect id="displayCorrect"></DisplayCorrect>
         <DisplayScore id="displayScore">0</DisplayScore>
-        <p>{answer}</p>
+        {/* <p>{answer}</p> */}
       </QuizContainer>
     </>
   );
@@ -144,6 +154,7 @@ const Form = styled.form`
 const H3 = styled.h3`
   font-size: 2vw;
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  height: 3vw;
   text-align: center;
 `;
 
