@@ -3,7 +3,7 @@ import Header from "./Navbar";
 import styled from "styled-components";
 
 
-const QuizSingle = () => {
+const QuizSingle = (props) => {
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -12,9 +12,27 @@ const QuizSingle = () => {
   const [timer, setTimer] = useState(15);
   const [start, setStart] = useState(false);
   const [score, setScore] = useState(1);
+  const [user,setUser] = useState(props?.users[props.users.length-1])
+  const [users, setUsers] = useState([]);
+  const userURL = "http://localhost:9000/api/users/";
+  const baseURL1 = "http://localhost:9000/api/users/";
 
   useEffect(() => {
     getItems();
+  }, []);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+  
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));}
+  
+  useEffect(() => {
+    setUser(props?.users[props.users.length-1])
+    console.log(user)
   }, []);
 
 
@@ -111,6 +129,23 @@ const QuizSingle = () => {
     }
   };
 
+  const postScore = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      score2: score-1,
+    };
+    console.log(users[users.length] - 1)
+    postScore(users[users.length - 1]._id, formData);
+  };
+
   return (
     <>
       <Header />
@@ -120,6 +155,7 @@ const QuizSingle = () => {
         <Timer>Timer</Timer>
         <Seconds id="timer">{timer}</Seconds>
         <Button onClick={startTimer}>Start</Button>
+        <Button onClick={handleSubmit}>Leaderboard</Button>
       </ScoreBox>
 
       <QuizContainer id="quizContainer">
