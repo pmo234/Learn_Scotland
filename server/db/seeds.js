@@ -290,7 +290,47 @@ db.singlequestions.insertMany([
     {
       "question":"In which county can you find Aberdeen?",
       "answer":"Aberdeenshire",
-  }
+    },
+    {
+      "question":"White and what other color can you find on the Scottish flag?",
+      "answer":"blue",
+    },
+    {
+      "question":"Ms. Sturgeon is the current First Minister for Scotland. What is her first name?",
+      "answer":"Nicola",
+    },
+    {
+      "question":"Which Scottish actor was the first James Bond?",
+      "answer":"Sean Connery",
+    },
+    {
+      "question":"Who was the Patron Saint of Scotland?",
+      "answer":"St Andrew",
+    },
+    {
+      "question":"Which famous University did Prince William attend?",
+      "answer":"St Andrews",
+    },
+    {
+      "question":"What animal is used for hagis?",
+      "answer":"sheep",
+    },
+    {
+      "question":"Which city in Scotland is considered the granite city?",
+      "answer":"Aberdeen",
+    },
+    {
+      "question":"Where can you find Scotlands famous monster?",
+      "answer":"Loch Ness",
+    },
+    {
+      "question":"Which city is Scotland's newest city?",
+      "answer":"Dunfermline",
+    },
+    {
+      "question":"What is the name of the famous Harry Potter Bridge?",
+      "answer":"Glenfinnan Viaduct",
+    },
 ]);
     
 db.forum.insertMany([
@@ -314,6 +354,8 @@ db.users.insertMany([
         "score2":90,
         "score3":80,
         "score4":70,
+        "comment":"This is a picture of something a found 0",
+        "image":"This is an image"
 
     },
     {
@@ -323,6 +365,8 @@ db.users.insertMany([
         "score2":100,
         "score3":40,
         "score4":80,
+        "comment":"This is a picture of something a found 1",
+        "image":"This is an image"
     },
     {
         "name":"Struan",
@@ -331,6 +375,8 @@ db.users.insertMany([
         "score2":90,
         "score3":90,
         "score4":10,
+        "comment":"This is a picture of something a found 2",
+        "image":"This is an image"
     },
     {
         "name":"Misha",
@@ -339,6 +385,8 @@ db.users.insertMany([
         "score2":70,
         "score3":70,
         "score4":70,
+        "comment":"This is a picture of something a found 3",
+        "image":"This is an image"
     },
     {
         "name":"Jamie",
@@ -347,6 +395,8 @@ db.users.insertMany([
         "score2":0,
         "score3":40,
         "score4":100,
+        "comment":"This is a picture of something a found 5",
+        "image":"This is an image"
 
     }
 ]);

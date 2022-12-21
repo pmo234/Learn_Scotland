@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function Leaderboard(props) {
-  console.log(props)
-  const [currUser, setCurrUser] = useState()
+const Leaderboard = (props) => {
   const [listToSort, setListToSort] = useState([]);
   const [listToSort2, setListToSort2] = useState([]);
   const [listToSort3, setListToSort3] = useState([]);
@@ -14,6 +12,8 @@ export default function Leaderboard(props) {
   const [inOrder3, setInOrder3] = useState([]);
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
+  //   const [displayLeaderboard, setDisplayLeaderboard] = useState([]);
+  console.log(props.users);
 
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
@@ -47,6 +47,10 @@ export default function Leaderboard(props) {
     setListToSort3(newSortedList3);
     setListToSort4(newSortedList4);
 
+    
+  }, []);
+
+  useEffect(() => {
     setInOrder(
       listToSort.sort((a, b) => {
         return b.score1 - a.score1;
@@ -67,7 +71,7 @@ export default function Leaderboard(props) {
         return b.score4 - a.score4;
       })
     );
-  }, [props.users]);
+  }, [listToSort]);
 
   const placeIndicator = [
     "1st",
@@ -122,19 +126,19 @@ export default function Leaderboard(props) {
       </li>
     );
   });
+  // console.log(props.users)
+  console.log(props.currUser);
 
   return (
     <QuizContainer>
       <h1>Quiz 1 Leaderboard {displayLeaderboard}</h1>
-      <Link to={{
-        pathname:"/singlechoice",
-        state:{props:props}}}>
+      <Link to="/singlechoice">
         <QuizLink>Take Quiz 1</QuizLink>
       </Link>
 
       <h1>Quiz 2 Leaderboard {displayLeaderboard2}</h1>
       <Link to="/multiplechoice">
-      <QuizLink>Take Quiz 2</QuizLink>
+        <QuizLink>Take Quiz 2</QuizLink>
       </Link>
 
       <h1>Quiz 3 Leaderboard {displayLeaderboard3}</h1>
@@ -146,7 +150,8 @@ export default function Leaderboard(props) {
       <QuizLink>Take Quiz 4</QuizLink>
     </QuizContainer>
   );
-}
+};
+export default Leaderboard;
 
 const QuizContainer = styled.div`
   display: grid;

@@ -4,15 +4,8 @@ import LandingPage from "../components/LandingPage";
 import Leaderboard from "../components/Leaderboard";
 const baseURL1 = "http://localhost:9000/api/users/";
 
-const LearnScotlandContainer = () => {
-  const [currUser, setCurrUser] = useState(null);
-  const [users, setUsers] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
+ 
   const changeFirst = () => {
     setFirstLoad(false);
   };
@@ -31,7 +24,7 @@ const LearnScotlandContainer = () => {
   };
 
   return firstLoad ? (
-    <LandingPage changeFirst={changeFirst} />
+    <LandingPage changeFirst={changeFirst} currUser = {props.currUser} setCurrUser = {props.setCurrUser} />
   ) : (
     <>
       <Header />

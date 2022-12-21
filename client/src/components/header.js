@@ -1,7 +1,12 @@
-import React from "react";
+
 import styled from "styled-components";
 
-const Header = () => {
+
+
+const Header = (props) => {
+  
+
+
   return (
     <HeaderContainer>
       <HeaderOne>
@@ -26,6 +31,9 @@ const Header = () => {
           <List>
             <A href="/forum">Forum</A>
           </List>
+          <h1>
+            user: {props.currUser}
+          </h1>
         </UnorderedList>
       </HeaderTwo>
     </HeaderContainer>
