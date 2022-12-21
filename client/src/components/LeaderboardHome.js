@@ -17,25 +17,29 @@ const Leaderboard = (props) => {
 
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
+      if (user.score1)
       return {
         name: user.name,
         score1: user.score1,
-      };
-    });
+      }}
+    );
 
     const newSortedList2 = props.users.map((user) => {
+      if (user.score2)
       return {
         name: user.name,
         score2: user.score2,
       };
     });
     const newSortedList3 = props.users.map((user) => {
+      if (user.score3)
       return {
         name: user.name,
         score3: user.score3,
       };
     });
     const newSortedList4 = props.users.map((user) => {
+      if (user.score4)
       return {
         name: user.name,
         score4: user.score4,
@@ -87,44 +91,44 @@ const Leaderboard = (props) => {
   ];
 
   const displayLeaderboard = inOrder.map((user, index) => {
-    return (
+    return user ? (
       <li key={index} className="leaderboard-item">
         <p>
           {placeIndicator[index]} place {user.name}
         </p>
         <p>{user.score1}</p>
       </li>
-    );
+    ):null
   });
   const displayLeaderboard2 = inOrder2.map((user, index) => {
-    return (
+    return user ? (
       <li key={index} className="leaderboard-item">
         <p>
           {placeIndicator[index]} place {user.name}
         </p>
         <p>{user.score2}</p>
       </li>
-    );
+    ):null
   });
   const displayLeaderboard3 = inOrder3.map((user, index) => {
-    return (
+    return user ?(
       <li key={index} className="leaderboard-item">
         <p>
           {placeIndicator[index]} place {user.name}
         </p>
         <p>{user.score3}</p>
       </li>
-    );
+    ):null
   });
   const displayLeaderboard4 = inOrder4.map((user, index) => {
-    return (
+    return user ?(
       <li key={index} className="leaderboard-item">
         <p>
           {placeIndicator[index]} place {user.name}
         </p>
         <p>{user.score4}</p>
       </li>
-    );
+    ):null
   });
   // console.log(props.users)
   console.log(props.currUser);
