@@ -189,6 +189,7 @@ const QuizSingle = (props) => {
 };
 
 const QuizContainer = styled.section`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   height: 33vw;
   width: 65%;
   margin: auto;
@@ -267,6 +268,7 @@ const DisplayScore = styled.h3`
 `;
 
 const ScoreBox = styled.div`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-radius: 5px;
   color: darkred;
