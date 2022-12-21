@@ -8,6 +8,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 const userURL = "http://localhost:9000/api/users/";
+const baseURL1 = "http://localhost:9000/api/users/";
 
 const Map = (props) => {
   const [position, setPosition] = useState(null);
@@ -16,8 +17,22 @@ const Map = (props) => {
   const [counter, setCounter] = useState(0);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(null);
-  const user = props?.users[props.users.length - 1];
-
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    getUsers();
+    if (users.length !== 0){
+      console.log(users[users.length - 1])
+      setUser(users[users.length - 1])}
+  }, []);
+  
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+          .then((results) => setUsers(results))}
+      console.log(users)
+      
   const getQuestions = () => {
     return fetch("http://localhost:9000/api/mapquestions").then((response) =>
       response.json().then((data) => setQuestions(data))
@@ -37,7 +52,7 @@ const Map = (props) => {
     const formData = {
       score4: score,
     };
-    postScore(user._id, formData);
+    postScore(users[users.length - 1]._id, formData);
   };
 
   const nextQ = () => {

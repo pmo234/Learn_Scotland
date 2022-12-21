@@ -2,17 +2,53 @@ import React, { useState, useEffect } from "react";
 import Header from "./Navbar";
 import styled from "styled-components";
 
+
 const QuizSingle = () => {
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [timer, setTimer] = useState(15);
+  const [start, setStart] = useState(false);
+  const [score, setScore] = useState(1);
 
   useEffect(() => {
     getItems();
   }, []);
 
+
+  useEffect(() => {
+    if (start === true) {
+      timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
+    }
+  }, [timer, start]);
+
+
+  const startTimer = () => {
+    setTimer(15);
+    setScore(1);
+    setStart(true);
+    document.getElementById(
+      "displayCorrect"
+    ).innerHTML = ``;
+    document.getElementById(
+      "displayScore").innerHTML = "0";
+  }
+ 
+
+  if (timer === 0) {
+    document.getElementById(
+      "displayCorrect"
+    ).innerHTML = `Game Over!`;
+    document.getElementById(
+      "displayCorrect").style.color = "red";
+    document.getElementById(
+      "displayCorrect").style.fontSize = "3vw";
+  };
+
+
+  // fetch questions from database
   const getItems = () => {
     fetch("http://localhost:9000/api/singlequestions")
       .then((response) => response.json())
@@ -26,6 +62,7 @@ const QuizSingle = () => {
       });
   };
 
+  // Disable 'Enter' key
   window.addEventListener(
     "keydown",
     function (e) {
@@ -48,32 +85,28 @@ const QuizSingle = () => {
     setFormData(formData);
 
     if (answer in formData) {
-      let score = 1;
-      score = answerList.indexOf(answer) + 1;
+   
+      setScore(score + 1);
       document.getElementById("answer").style.backgroundColor = "lightgreen";
       document.getElementById(
         "displayCorrect"
-      ).innerHTML = `${answer} is correct. Well done!`;
+      ).innerHTML = `${answer} is correct.`;
       document.getElementById("displayScore").innerHTML = `${score}`;
 
-      if (score === 20) {
+      if (score === 25) {
         document.getElementById(
           "displayCorrect"
-        ).innerHTML = `5 CORRECT ANSWERS!!!`;
+        ).innerHTML = `Top Score!!!`;
         e.target.value = "Congratulations!";
       } else {
-        setTimeout(function () {
-          e.target.value = "Next question...";
-          document.getElementById("displayCorrect").innerHTML = `Get ready...`;
-          document.getElementById("answer").style.backgroundColor = "white";
-        }, 2000);
         setTimeout(function () {
           e.target.value = "";
           let index = answerList.indexOf(answer);
           setQuestion(questionList[index + 1]);
           setAnswer(answerList[index + 1]);
           document.getElementById("displayCorrect").innerHTML = ``;
-        }, 3000);
+          document.getElementById("answer").style.backgroundColor = "white";
+        },1000 );
       }
     }
   };
@@ -85,9 +118,8 @@ const QuizSingle = () => {
 
       <ScoreBox>
         <Timer>Timer</Timer>
-        <Paragraph>Time here</Paragraph>
-        <Score>Score</Score>
-        <Paragraph>Score here</Paragraph>
+        <Seconds id="timer">{timer}</Seconds>
+        <Button onClick={startTimer}>Start</Button>
       </ScoreBox>
 
       <QuizContainer id="quizContainer">
@@ -199,9 +231,9 @@ const DisplayScore = styled.h3`
 const ScoreBox = styled.div`
   border: solid darkblue;
   border-radius: 5px;
-  color: red;
+  color: darkred;
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-  height: 9vw;
+  height: 11vw;
   margin-left: 85%;
   margin-top: 3vw;
   padding: 0.3vw;
@@ -216,16 +248,29 @@ const Timer = styled.div`
   height: 2vw;
 `;
 
-const Score = styled.div`
-  font-size: 1.3vw;
-  height: 2vw;
+
+const Seconds = styled.h3`
+  font-size: 2vw;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  color: darkred;
+  text-align: center;
+  margin-right: 3vw;
+  margin-top: 0;
+  margin-bottom: 1vw;
+  width: 92%;
 `;
 
-const Paragraph = styled.p`
-  color: black;
-  font-size: 1vw;
-  height: 1vw;
-  margin-bottom: 1vw;
+const Button = styled.button`
+  background-color: #E1ECF0;
+  border-radius: 5px;
+  border: solid darkblue;
+  font-size: 1.5vw;
+  height: 3vw;
+  padding: 2px;
+  width: 5vw;
+
 `;
+
+
 
 export default QuizSingle;

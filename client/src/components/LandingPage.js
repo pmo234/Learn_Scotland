@@ -13,6 +13,7 @@ const LandingPage = (props) => {
   };
 
   const handleSubmit = (e) => {
+    
     const formData = {
       name: e.target.nameInput.value,
       score1: null,
