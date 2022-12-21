@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header.js";
+import Header from "./Navbar.js";
 import {
   CircleMarker,
   MapContainer,
@@ -61,7 +61,11 @@ const Map = () => {
           </MapContainer>
         </div>
         <div className="flex align-middle justify-center gap-3 m-3">
-          <img className="w-1/5 border-solid border-purple-400 border-4" src={question.img} alt="tree" />
+          <img
+            className="w-1/5 border-solid border-purple-400 border-4"
+            src={question.img}
+            alt="tree"
+          />
           <h3>{question.question}</h3>
         </div>
         {answered ? (

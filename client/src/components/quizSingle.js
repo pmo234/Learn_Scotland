@@ -1,19 +1,13 @@
-
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "./Navbar";
 import styled from "styled-components";
 
-
 const QuizSingle = () => {
-
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
- 
-
-
 
   useEffect(() => {
     getItems();
@@ -32,11 +26,22 @@ const QuizSingle = () => {
       });
   };
 
-  window.addEventListener('keydown',function(e){
-    if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){
-      if(e.target.nodeName=='INPUT' && e.target.type=='text'){
-        e.preventDefault();
-        return false;}}},true);
+  window.addEventListener(
+    "keydown",
+    function (e) {
+      if (
+        e.keyIdentifier == "U+000A" ||
+        e.keyIdentifier == "Enter" ||
+        e.keyCode == 13
+      ) {
+        if (e.target.nodeName == "INPUT" && e.target.type == "text") {
+          e.preventDefault();
+          return false;
+        }
+      }
+    },
+    true
+  );
 
   const onChange = (e) => {
     formData[e.target.value] = e.target.value;
@@ -46,18 +51,17 @@ const QuizSingle = () => {
       let score = 1;
       score = answerList.indexOf(answer) + 1;
       document.getElementById("answer").style.backgroundColor = "lightgreen";
-      document.getElementById("displayCorrect").innerHTML = `${answer} is correct. Well done!`;
+      document.getElementById(
+        "displayCorrect"
+      ).innerHTML = `${answer} is correct. Well done!`;
       document.getElementById("displayScore").innerHTML = `${score}`;
 
-
-
       if (score === 20) {
-        document.getElementById("displayCorrect").innerHTML = `5 CORRECT ANSWERS!!!`;
+        document.getElementById(
+          "displayCorrect"
+        ).innerHTML = `5 CORRECT ANSWERS!!!`;
         e.target.value = "Congratulations!";
-      } 
-
-
-      else {
+      } else {
         setTimeout(function () {
           e.target.value = "Next question...";
           document.getElementById("displayCorrect").innerHTML = `Get ready...`;
@@ -193,35 +197,35 @@ const DisplayScore = styled.h3`
 `;
 
 const ScoreBox = styled.div`
-    border: solid darkblue;
-    border-radius: 5px;
-    color: red;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-    height: 9vw;
-    margin-left: 85%;
-    margin-top: 3vw;
-    padding: 0.3vw;
-    position: absolute;
-    text-align: center;
-    width: 7vw;
-    z-index: 2;
-`
+  border: solid darkblue;
+  border-radius: 5px;
+  color: red;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  height: 9vw;
+  margin-left: 85%;
+  margin-top: 3vw;
+  padding: 0.3vw;
+  position: absolute;
+  text-align: center;
+  width: 7vw;
+  z-index: 2;
+`;
 
 const Timer = styled.div`
-    font-size: 1.3vw;
-    height: 2vw;
-`
+  font-size: 1.3vw;
+  height: 2vw;
+`;
 
 const Score = styled.div`
-    font-size: 1.3vw;
-    height: 2vw;
-`
+  font-size: 1.3vw;
+  height: 2vw;
+`;
 
 const Paragraph = styled.p`
-    color: black;
-    font-size: 1vw;
-    height: 1vw;
-    margin-bottom: 1vw;
-`
+  color: black;
+  font-size: 1vw;
+  height: 1vw;
+  margin-bottom: 1vw;
+`;
 
 export default QuizSingle;

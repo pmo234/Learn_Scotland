@@ -14,11 +14,12 @@ const LandingPage = (props) => {
 
   const handleSubmit = (e) => {
     const formData = {
-      ame: e.target.nameInput.value,
+      name: e.target.nameInput.value,
     };
     postUser(formData);
     e.preventDefault();
     props.changeFirst();
+    props.setCurrUser(e.target.nameInput.value)
   };
 
   return (

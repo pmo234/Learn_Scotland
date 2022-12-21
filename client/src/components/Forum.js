@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "./Navbar";
 import { useState, useEffect } from "react";
-const baseURL = "http://localhost:9000/api/forum/";
 const userURL = "http://localhost:9000/api/users";
 
 export default function Forum(props) {
@@ -32,7 +31,6 @@ export default function Forum(props) {
     else {
       setUserName(props.users[props.users.length - 1].name);
       console.log(props.users);
-      
     }
   }, [commentList]);
 
@@ -47,10 +45,10 @@ export default function Forum(props) {
       // console.log(props.users)
     ]);
     const formData = {
-        name: props.users[props.users.length - 1].name,
-        comment: event.target[0].value,
-      };
-      postComment(formData);
+      name: props.users[props.users.length - 1].name,
+      comment: event.target[0].value,
+    };
+    postComment(formData);
   };
 
   return (
