@@ -196,6 +196,7 @@ const Place = styled.div`
 `;
 
 const QuizContainer = styled.section`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-width: 0.5vw;
   border-radius: 2vw;
@@ -234,7 +235,7 @@ const Success = styled.h1`
   font-size: 3vw;
   height: 4vw;
   margin: auto;
-  margin-top: 1%;
+  margin-top: 0%;
   margin-bottom: 2vw;
   padding-top: 0.5vw;
   text-align: center;
@@ -242,6 +243,7 @@ const Success = styled.h1`
 `;
 
 const ScoreBox = styled.div`
+  background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-radius: 5px;
   color: red;
