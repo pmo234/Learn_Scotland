@@ -24,10 +24,6 @@ const Map = (props) => {
     );
   };
 
-  useEffect(() => {
-    getQuestions();
-  }, []);
-
   const postScore = (id, payload) => {
     return fetch(userURL + id, {
       method: "PUT",
@@ -80,7 +76,7 @@ const Map = (props) => {
         </div>
         <div className="flex align-middle justify-center gap-3 m-3">
           <img
-            className="w-1/5 border-solid border-purple-400 border-4"
+            className="w-1/5 border-solid border-blue-900 border-4"
             src={question.img}
             alt="tree"
           />
@@ -93,7 +89,7 @@ const Map = (props) => {
               {correct && position ? <p>Well done</p> : null}
               {correct === false && position ? <p>Unlucky pal</p> : null}
               <button
-                className="bg-purple-500 rounded py-1 px-2 text-white "
+                className="bg-blue-900 rounded py-1 px-2 text-white "
                 onClick={nextQ}
               >
                 Next
@@ -132,7 +128,7 @@ const Map = (props) => {
       <Header />
       <p>{score} out of 5</p>
       <button
-        className="bg-purple-500 rounded py-1 px-2 text-white "
+        className="bg-blue-900 rounded py-1 px-2 text-white "
         onClick={handleSubmit}
       >
         Submit

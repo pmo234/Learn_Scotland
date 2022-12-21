@@ -47,6 +47,7 @@ function App() {
                 setCurrUser={setCurrUser}
                 changeFirst={changeFirst}
                 firstLoad={firstLoad}
+                getUsers={getUsers}
               />
             }
           />

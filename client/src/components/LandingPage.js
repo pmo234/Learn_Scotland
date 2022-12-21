@@ -25,14 +25,15 @@ const LandingPage = (props) => {
     e.preventDefault();
     props.changeFirst();
     props.setCurrUser(e.target.nameInput.value)
+    props.getUsers()
   };
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen mb-12 overflow-hidden">
-      <h1 className="relative z-30 p-5 text-2xl text-white bg-purple-500 bg-opacity-70 rounded m-3">
+      <h1 className="relative z-30 p-5 text-2xl text-white bg-blue-900 bg-opacity-70 rounded m-3">
         Alba/Scotland
       </h1>
-      <h3 className="relative z-30 p-3 text-xl text-white bg-purple-400 bg-opacity-80 rounded m-5">
+      <h3 className="relative z-30 p-3 text-xl text-white bg-blue-900 bg-opacity-80 rounded m-5">
         Who? What? Where?
       </h3>
       <form
@@ -49,7 +50,7 @@ const LandingPage = (props) => {
           required
         />
         <button
-          className="relative z-30 p-3 text-xl text-white bg-purple-300 bg-opacity-50 rounded m-5"
+          className="relative z-30 p-3 text-xl text-white bg-blue-900 bg-opacity-50 rounded m-5"
           type="submit"
           value="submit"
         >
