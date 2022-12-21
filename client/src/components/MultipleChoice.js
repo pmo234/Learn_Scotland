@@ -2,9 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import Header from "./Header";
 import "./MultipleChoice.css";
 import { Canvas } from "@react-three/fiber";
+import { useLocation } from "react-router-dom";
 // import { OrbitControls, useGLTF } from "@react-three/drei";
 // import Counter from "./Counter.js";
 const MultipleChoice = () => {
+  const location = useLocation();
+  console.log(location.state?.data);
   const [score, setScore] = useState(0);
   // const [result, setResult] = useState();
   const [totalLen, setTotalLen] = useState();
