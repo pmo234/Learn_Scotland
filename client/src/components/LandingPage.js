@@ -1,14 +1,9 @@
 import React from "react";
-import lochVideo from "../assets/videos/Loch35630.mp4";
+import lochVideo from "../assets/videos/w2s.mp4";
 import highCath from "../assets/music/high_cath.mp3";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 const userURL = "http://localhost:9000/api/users";
 
 const LandingPage = (props) => {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
   const postUser = (payload) => {
     return fetch(userURL, {
       method: "POST",
@@ -19,20 +14,21 @@ const LandingPage = (props) => {
 
   const handleSubmit = (e) => {
     const formData = {
-      name: e.target.nameInput.value,
+      ame: e.target.nameInput.value,
     };
     postUser(formData);
-    // e.preventDefault();
-    props.changeFirst()
-    props.setCurrUser(e.target.nameInput.value);
-    // console.log(props.currUser);
+    e.preventDefault();
+    props.changeFirst();
   };
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen mb-12 overflow-hidden">
-      <h1 className="relative z-30 p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded m-5">
-        fàilte gu Alba/ Welcome to Scotland
+      <h1 className="relative z-30 p-5 text-2xl text-white bg-purple-500 bg-opacity-70 rounded m-3">
+        Alba/Scotland
       </h1>
+      <h3 className="relative z-30 p-3 text-xl text-white bg-purple-400 bg-opacity-80 rounded m-5">
+        Who? What? Where?
+      </h3>
       <form
         className="flex flex-col z-30"
         onSubmit={handleSubmit}
