@@ -1,32 +1,52 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SingleQuestion from "./components/quizSingle"
+import SingleQuestion from "./components/quizSingle";
 import MultiQuestion from "./components/MultipleChoice";
 import DragNDrop from "./components/QuizDragNDrop";
 import MapQ from "./components/MapQ";
 import LearnScotlandContainer from "./containers/LearnScotlandContainer";
+import Forum from "./containers/Forum";
+import { useEffect,useState } from "react";
+const baseURL1 = "http://localhost:9000/api/users/";
 
 function App() {
+  const [currUser, setCurrUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  
+  
+  
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  
+
+  
+
+  // ? this is the user that was last added i.e. the current user
+  // useEffect(() => {
+  //   if (users && users[0]) {
+  //     setCurrUser(users[users.length - 1].name);
+  //   }
+  // }, [users2]);
+
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));
+  };
+  
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={<LearnScotlandContainer />}
-          />
-          <Route
-            path="/singlechoice"
-            element={<SingleQuestion />}
-          />
-          <Route
-            path="/multiplechoice"
-            element={<MultiQuestion/>}
-          />
-          <Route
-            path="/dragndrop"
-            element={<DragNDrop />}
-          />
-          <Route path="/mapquiz" element={<MapQ />} />
+          <Route path="/" element={<LearnScotlandContainer currUser = {currUser} users={users} setCurrUser= {setCurrUser} />} />
+          <Route path="/singlechoice" element={<SingleQuestion users = {users} currUser = {currUser}/>} />
+          <Route path="/multiplechoice" element={<MultiQuestion users = {users} currUser = {currUser}/>} />
+          <Route path="/dragndrop" element={<DragNDrop users = {users} currUser = {currUser}/>} />
+          <Route path="/mapquiz" element={<MapQ users = {users} currUser = {currUser}/>} />
+          <Route path="/forum" element={<Forum users = {users} setUsers = {setUsers} currUser={currUser}/>} />
         </Routes>
       </Router>
     </div>

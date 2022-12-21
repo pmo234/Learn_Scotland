@@ -24,7 +24,8 @@ const LandingPage = (props) => {
     postUser(formData);
     // e.preventDefault();
     props.changeFirst()
-    setUser(e.target.nameInput.value);
+    props.setCurrUser(e.target.nameInput.value);
+    // console.log(props.currUser);
   };
 
   return (

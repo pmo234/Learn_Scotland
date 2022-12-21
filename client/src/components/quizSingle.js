@@ -12,6 +12,9 @@ const QuizSingle = (props) => {
   const [formData, setFormData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+ 
+
+
 
   useEffect(() => {
     getItems();
