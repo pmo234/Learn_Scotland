@@ -22,6 +22,7 @@ const Map = (props) => {
   const [user, setUser] = useState(null);
   
   useEffect(() => {
+    getQuestions();
     getUsers();
     if (users.length !== 0){
       console.log(users[users.length - 1])
@@ -153,6 +154,8 @@ const Map = (props) => {
       >
         Submit
       </button>
+
+    </Body>
     </>
   );
 };
