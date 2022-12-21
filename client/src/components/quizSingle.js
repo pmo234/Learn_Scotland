@@ -4,9 +4,8 @@ import Header from "./Header";
 import styled from "styled-components";
 
 
-// comment for no reason
-const QuizSingle = (props) => {
-  console.log(props);
+const QuizSingle = () => {
+
   const [questionList, setQuestionList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -30,6 +29,12 @@ const QuizSingle = (props) => {
       });
   };
 
+  window.addEventListener('keydown',function(e){
+    if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){
+      if(e.target.nodeName=='INPUT' && e.target.type=='text'){
+        e.preventDefault();
+        return false;}}},true);
+
   const onChange = (e) => {
     formData[e.target.value] = e.target.value;
     setFormData(formData);
@@ -38,17 +43,18 @@ const QuizSingle = (props) => {
       let score = 1;
       score = answerList.indexOf(answer) + 1;
       document.getElementById("answer").style.backgroundColor = "lightgreen";
-      document.getElementById(
-        "displayCorrect"
-      ).innerHTML = `${answer} is correct. Well done!`;
+      document.getElementById("displayCorrect").innerHTML = `${answer} is correct. Well done!`;
       document.getElementById("displayScore").innerHTML = `${score}`;
 
-      if (score === 5) {
-        document.getElementById(
-          "displayCorrect"
-        ).innerHTML = `5 CORRECT ANSWERS!!!`;
+
+
+      if (score === 20) {
+        document.getElementById("displayCorrect").innerHTML = `5 CORRECT ANSWERS!!!`;
         e.target.value = "Congratulations!";
-      } else {
+      } 
+
+
+      else {
         setTimeout(function () {
           e.target.value = "Next question...";
           document.getElementById("displayCorrect").innerHTML = `Get ready...`;
@@ -68,7 +74,14 @@ const QuizSingle = (props) => {
   return (
     <>
       <Header />
-      <QuizTitle>Five Questions!</QuizTitle>
+      <QuizTitle>How Many Questions!</QuizTitle>
+
+      <ScoreBox>
+        <Timer>Timer</Timer>
+        <Paragraph>Time here</Paragraph>
+        <Score>Score</Score>
+        <Paragraph>Score here</Paragraph>
+      </ScoreBox>
 
       <QuizContainer id="quizContainer">
         <QuestionBox>
@@ -92,7 +105,7 @@ const QuizSingle = (props) => {
 
         <DisplayCorrect id="displayCorrect"></DisplayCorrect>
         <DisplayScore id="displayScore">0</DisplayScore>
-        <p>{answer}</p>
+        {/* <p>{answer}</p> */}
       </QuizContainer>
     </>
   );
@@ -142,6 +155,7 @@ const Form = styled.form`
 const H3 = styled.h3`
   font-size: 2vw;
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  height: 3vw;
   text-align: center;
 `;
 
@@ -174,5 +188,37 @@ const DisplayScore = styled.h3`
   margin-top: 0;
   width: 92%;
 `;
+
+const ScoreBox = styled.div`
+    border: solid darkblue;
+    border-radius: 5px;
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    height: 9vw;
+    margin-left: 85%;
+    margin-top: 3vw;
+    padding: 0.3vw;
+    position: absolute;
+    text-align: center;
+    width: 7vw;
+    z-index: 2;
+`
+
+const Timer = styled.div`
+    font-size: 1.3vw;
+    height: 2vw;
+`
+
+const Score = styled.div`
+    font-size: 1.3vw;
+    height: 2vw;
+`
+
+const Paragraph = styled.p`
+    color: black;
+    font-size: 1vw;
+    height: 1vw;
+    margin-bottom: 1vw;
+`
 
 export default QuizSingle;
