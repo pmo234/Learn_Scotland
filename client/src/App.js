@@ -17,6 +17,7 @@ function App() {
     getUsers();
   }, []);
   
+  
   const changeFirst = () => {
     setFirstLoad(false);
   };
@@ -47,6 +48,7 @@ function App() {
                 setCurrUser={setCurrUser}
                 changeFirst={changeFirst}
                 firstLoad={firstLoad}
+                getUsers={getUsers} 
               />
             }
           />
@@ -57,7 +59,7 @@ function App() {
           />
           <Route
             path="/multiplechoice"
-            element={<MultiQuestion users={users} currUser={currUser} />}
+            element={<MultiQuestion users={users} currUser={currUser} setUsers={setUsers} />}
           />
           <Route
             path="/dragndrop"
@@ -65,7 +67,7 @@ function App() {
           />
           <Route
             path="/mapquiz"
-            element={<MapQ users={users} currUser={currUser} />}
+            element={<MapQ users={users} currUser={currUser} serUsers={setUsers}/>}
           />
           <Route
             path="/forum"

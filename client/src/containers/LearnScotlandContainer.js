@@ -10,6 +10,7 @@ const LearnScotlandContainer = (props) => {
       changeFirst={props.changeFirst}
       currUser={props.currUser}
       setCurrUser={props.setCurrUser}
+      getUsers={props.getUsers}
     />
   ) : (
     <>
@@ -18,6 +19,7 @@ const LearnScotlandContainer = (props) => {
         users={props.users}
         currUser={props.currUser}
         setCurrUser={props.setCurrUser}
+
       />
     </>
   );

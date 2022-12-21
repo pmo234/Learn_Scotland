@@ -13,6 +13,7 @@ const LandingPage = (props) => {
   };
 
   const handleSubmit = (e) => {
+    
     const formData = {
       name: e.target.nameInput.value,
       score1: null,
@@ -25,6 +26,8 @@ const LandingPage = (props) => {
     e.preventDefault();
     props.changeFirst();
     props.setCurrUser(e.target.nameInput.value)
+    props.getUsers()
+
   };
 
   return (

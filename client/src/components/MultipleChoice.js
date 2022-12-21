@@ -5,7 +5,9 @@ import { Canvas } from "@react-three/fiber";
 import { useLocation } from "react-router-dom";
 // import { OrbitControls, useGLTF } from "@react-three/drei";
 // import Counter from "./Counter.js";
-const MultipleChoice = () => {
+const MultipleChoice = (props) => {
+  const userURL = "http://localhost:9000/api/users/";
+  const baseURL1 = "http://localhost:9000/api/users/";
   const location = useLocation();
   console.log(location.state?.data);
   const [score, setScore] = useState(0);
@@ -29,9 +31,24 @@ const MultipleChoice = () => {
   const [hint, setHint] = useState(null);
   const ref = useRef();
   const [scoreContainer, setScoreContainer] = useState("scoreContainer hide");
+  const [user,setUser] = useState(props?.users[props.users.length-1])
+  const [users, setUsers] = useState([]);
+  console.log(props)
+  console.log(props.currUser)
 
   useEffect(() => {
+    getUsers();
+  }, []);
+  
+  const getUsers = () => {
+    return fetch(baseURL1)
+      .then((res) => res.json())
+      .then((results) => setUsers(results));}
+  
+  useEffect(() => {
     getQuestions();
+    setUser(props?.users[props.users.length-1])
+    console.log(user)
   }, []);
 
   const getQuestions = () => {
@@ -159,9 +176,22 @@ const MultipleChoice = () => {
     setResultButton4Class("btn");
   };
 
-  // const resetHint = () => {
-  //   setHint(null);
-  // };
+  const postScore = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      score3: score,
+    };
+    console.log(users[users.length] - 1)
+    postScore(users[users.length - 1]._id, formData);
+  };
 
   const questionsList = questions.map((question, index) => {
     return (
@@ -297,9 +327,17 @@ const MultipleChoice = () => {
           <h2>Congratulations</h2>
           <p> {`{user} your score is ${score}`}</p>
 
-          <a href="/home" className="next-btn btnMenu">
+          {/* <a href="/leaderboard" className="next-btn btnMenu">
             Leader board
-          </a>
+          </a> */}
+          <button
+        className="next-btn btnMenu"
+        onClick={handleSubmit}
+        
+      >
+        Leader board
+      </button>
+          
         </div>
       </div>
     </>
