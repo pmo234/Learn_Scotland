@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import LandingPage from "./components/LandingPage";
-import Leaderboard from "./components/Leaderboard";
+import Header from "../components/Header";
+import LandingPage from "../components/LandingPage";
+import Leaderboard from "../components/Leaderboard";
 const baseURL1 = "http://localhost:9000/api/users/";
-import Forum from "./Forum";
 
 const LearnScotlandContainer = () => {
   const [currUser, setCurrUser] = useState(null);
@@ -30,13 +29,13 @@ const LearnScotlandContainer = () => {
       .then((res) => res.json())
       .then((results) => setUsers(results));
   };
- 
+
   return firstLoad ? (
     <LandingPage changeFirst={changeFirst} />
   ) : (
     <>
       <Header />
-      <Leaderboard users={users}/>
+      <Leaderboard users={users} />
     </>
   );
 };
