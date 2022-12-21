@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Leaderboard = (props)=> {
-
+const Leaderboard = (props) => {
   const [listToSort, setListToSort] = useState([]);
   const [listToSort2, setListToSort2] = useState([]);
   const [listToSort3, setListToSort3] = useState([]);
@@ -13,7 +12,8 @@ const Leaderboard = (props)=> {
   const [inOrder3, setInOrder3] = useState([]);
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
-//   const [displayLeaderboard, setDisplayLeaderboard] = useState([]);
+  //   const [displayLeaderboard, setDisplayLeaderboard] = useState([]);
+  console.log(props.users);
 
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
@@ -47,6 +47,10 @@ const Leaderboard = (props)=> {
     setListToSort3(newSortedList3);
     setListToSort4(newSortedList4);
 
+    
+  }, []);
+
+  useEffect(() => {
     setInOrder(
       listToSort.sort((a, b) => {
         return b.score1 - a.score1;
@@ -67,31 +71,7 @@ const Leaderboard = (props)=> {
         return b.score4 - a.score4;
       })
     );
-  }, []);
-
-  useEffect(() => {
-    setInOrder(
-        listToSort.sort((a, b) => {
-          return b.score1 - a.score1;
-        })
-      );
-      setInOrder2(
-        listToSort2.sort((a, b) => {
-          return b.score2 - a.score2;
-        })
-      );
-      setInOrder3(
-        listToSort3.sort((a, b) => {
-          return b.score3 - a.score3;
-        })
-      );
-      setInOrder4(
-        listToSort4.sort((a, b) => {
-          return b.score4 - a.score4;
-        })
-      );
-
-  },[listToSort])
+  }, [listToSort]);
 
   const placeIndicator = [
     "1st",
@@ -105,8 +85,6 @@ const Leaderboard = (props)=> {
     "9th",
     "10th",
   ];
-
- 
 
   const displayLeaderboard = inOrder.map((user, index) => {
     return (
@@ -147,9 +125,10 @@ const Leaderboard = (props)=> {
         <p>{user.score4}</p>
       </li>
     );
-});
+  });
+  // console.log(props.users)
+  console.log(props.currUser);
 
-console.log(inOrder4)
   return (
     <QuizContainer>
       <h1>Quiz 1 Leaderboard {displayLeaderboard}</h1>
@@ -171,7 +150,7 @@ console.log(inOrder4)
       <QuizLink>Take Quiz 4</QuizLink>
     </QuizContainer>
   );
-}
+};
 export default Leaderboard;
 
 const QuizContainer = styled.div`
