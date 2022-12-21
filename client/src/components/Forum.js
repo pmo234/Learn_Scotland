@@ -1,10 +1,19 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "./Navbar";
 import { useState, useEffect } from "react";
-const baseURL = "http://localhost:9000/api/forum/";
+const userURL = "http://localhost:9000/api/users";
 
 export default function Forum(props) {
   const [userName, setUserName] = useState("");
+
+  const postComment = (payload) => {
+    return fetch(userURL, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
   const commentList = props.users.map((item, index) => {
     return item.comment ? (
       <>
@@ -15,6 +24,7 @@ export default function Forum(props) {
       </>
     ) : null;
   });
+
   useEffect(() => {
     if (props.users.length === 0) return;
     //   if (userName == props.users[props.users.length-1].name) return
@@ -32,8 +42,13 @@ export default function Forum(props) {
         name: props.users[props.users.length - 1].name,
         comment: event.target[0].value,
       },
-    // console.log(props.users)
+      // console.log(props.users)
     ]);
+    const formData = {
+      name: props.users[props.users.length - 1].name,
+      comment: event.target[0].value,
+    };
+    postComment(formData);
   };
 
   return (

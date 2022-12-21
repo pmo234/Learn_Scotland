@@ -7,10 +7,14 @@ function ZoomQ() {
   const [answered, setAnswered] = useState(null);
 
   const answerList = ["a", "b", "c", "d"];
-  
+
   const answerMap = answerList.map((answer, index) => {
-    return <button className="py-2 px-4 rounded bg-slate-700 m-4" key={index}>{answer}</button>
-  })
+    return (
+      <button className="py-2 px-4 rounded bg-slate-700 m-4" key={index}>
+        {answer}
+      </button>
+    );
+  });
 
   return (
     <div>

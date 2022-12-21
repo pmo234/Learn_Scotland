@@ -1,12 +1,7 @@
-
 import styled from "styled-components";
 
-
-
 const Header = (props) => {
-  
-
-
+  console.log(props)
   return (
     <HeaderContainer>
       <HeaderOne>
@@ -17,7 +12,7 @@ const Header = (props) => {
       <HeaderTwo>
         <UnorderedList>
           <List>
-            <A href="/home">Home</A>
+            <A href="/leaderboard">Leaderboards</A>
           </List>
           <List>
             <A href="/multiplechoice">Multiple Choice Quiz</A>
@@ -31,9 +26,7 @@ const Header = (props) => {
           <List>
             <A href="/forum">Forum</A>
           </List>
-          <h1>
-            user: {props.currUser}
-          </h1>
+          <h1>user: {props.currUser}</h1>
         </UnorderedList>
       </HeaderTwo>
     </HeaderContainer>

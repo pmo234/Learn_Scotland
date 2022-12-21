@@ -1,72 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Header from "./Header";
-
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Header from "./Navbar";
 
 const QuizDragDrop = () => {
+  const [one, setOne] = useState(0);
+  const [two, setTwo] = useState(0);
+  const [three, setThree] = useState(0);
+  const [four, setFour] = useState(0);
+  const [five, setFive] = useState(0);
+  const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
 
-    const [one, setOne] = useState(0);
-    const [two, setTwo] = useState(0);
-    const [three, setThree] = useState(0);
-    const [four, setFour] = useState(0);
-    const [five, setFive] = useState(0);
-    const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
+  useEffect(() => {
+    if (one + two + three + four + five === 5) {
+      setAnsweredCorrectly(true);
+    }
+  }, [one, two, three, four, five]);
 
-    useEffect(() => {
-        if (one + two + three + four + five === 5) {
-            setAnsweredCorrectly(true)
-        };
-    }, [one, two, three, four, five]);
+  if (answeredCorrectly) {
+    document.getElementById("drag1").setAttribute("draggable", false);
+    document.getElementById("drag2").setAttribute("draggable", false);
+    document.getElementById("drag3").setAttribute("draggable", false);
+    document.getElementById("drag4").setAttribute("draggable", false);
+    document.getElementById("drag5").setAttribute("draggable", false);
+    document.getElementById("div1Container").innerHTML = "58.6373° N";
+    document.getElementById("div2Container").innerHTML = "57.1499° N";
+    document.getElementById("div3Container").innerHTML = "56.3950° N";
+    document.getElementById("div4Container").innerHTML = "55.9533° N";
+    document.getElementById("div5Container").innerHTML = "55.8642° N";
+  }
 
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
 
-    if (answeredCorrectly) {
-        document.getElementById('drag1').setAttribute('draggable', false);
-        document.getElementById('drag2').setAttribute('draggable', false);
-        document.getElementById('drag3').setAttribute('draggable', false);
-        document.getElementById('drag4').setAttribute('draggable', false);
-        document.getElementById('drag5').setAttribute('draggable', false);
-        document.getElementById('div1Container').innerHTML = '58.6373° N';
-        document.getElementById('div2Container').innerHTML = '57.1499° N';
-        document.getElementById('div3Container').innerHTML = '56.3950° N';
-        document.getElementById('div4Container').innerHTML = '55.9533° N';
-        document.getElementById('div5Container').innerHTML = '55.8642° N';
-    };
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
 
-    function allowDrop(ev) {
-        ev.preventDefault();
-    };
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    var place = ev.target.id;
 
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    };
-
-    function drop(ev) {
-
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-        var place = ev.target.id;
-    
-        if (data.slice(-1) === place.slice(-1)) {
-            if (data.slice(-1) == 1 ){ setOne(1) }
-            if (data.slice(-1) == 2 ){ setTwo(1) }
-            if (data.slice(-1) == 3 ){ setThree(1) }
-            if (data.slice(-1) == 4 ){ setFour(1) }
-            if (data.slice(-1) == 5 ){ setFive(1) }
-        }
-        else {
-            if (data.slice(-1) == 1 ){ setOne(0) }
-            if (data.slice(-1) == 2 ){ setTwo(0) }
-            if (data.slice(-1) == 3 ){ setThree(0) }
-            if (data.slice(-1) == 4 ){ setFour(0) }
-            if (data.slice(-1) == 5 ){ setFive(0) }
-        };
-    };
+    if (data.slice(-1) === place.slice(-1)) {
+      if (data.slice(-1) == 1) {
+        setOne(1);
+      }
+      if (data.slice(-1) == 2) {
+        setTwo(1);
+      }
+      if (data.slice(-1) == 3) {
+        setThree(1);
+      }
+      if (data.slice(-1) == 4) {
+        setFour(1);
+      }
+      if (data.slice(-1) == 5) {
+        setFive(1);
+      }
+    } else {
+      if (data.slice(-1) == 1) {
+        setOne(0);
+      }
+      if (data.slice(-1) == 2) {
+        setTwo(0);
+      }
+      if (data.slice(-1) == 3) {
+        setThree(0);
+      }
+      if (data.slice(-1) == 4) {
+        setFour(0);
+      }
+      if (data.slice(-1) == 5) {
+        setFive(0);
+      }
+    }
+  }
 
   return (
     <>
       <Header />
-      { answeredCorrectly ? <Success id="success">Success!</Success> : <QuizTitle>Drag and Drop!</QuizTitle> }
+      {answeredCorrectly ? (
+        <Success id="success">Success!</Success>
+      ) : (
+        <QuizTitle>Drag and Drop!</QuizTitle>
+      )}
       <ScoreBox>
         <Timer>Timer</Timer>
         <Paragraph>Time here</Paragraph>
@@ -74,31 +93,40 @@ const QuizDragDrop = () => {
         <Paragraph>Score here</Paragraph>
       </ScoreBox>
       <QuizContainer id="quizContainer">
+        <Instructions>
+          Put Scottish place names in order from most northern to most southern.
+        </Instructions>
 
-        <Instructions>Put Scottish place names in order from most northern to most southern.</Instructions>
-        
         <StartBlock>
-
           <DivContainer id="div1Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag3" draggable="true"onDragStart={drag}>Perth</Word>
-          </DivContainer>
-          
-          <DivContainer id="div2Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag4" draggable="true" onDragStart={drag}>Edinburgh</Word>
-          </DivContainer>
-          
-          <DivContainer id="div3Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag5" draggable="true" onDragStart={drag}>Glasgow</Word>
-          </DivContainer>
-          
-          <DivContainer id="div4Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag1" draggable="true" onDragStart={drag}>John o'Groats</Word>
-          </DivContainer>
-          
-          <DivContainer id="div5Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag2" draggable="true" onDragStart={drag}>Aberdeen</Word>
+            <Word id="drag3" draggable="true" onDragStart={drag}>
+              Perth
+            </Word>
           </DivContainer>
 
+          <DivContainer id="div2Container" onDrop={drop} onDragOver={allowDrop}>
+            <Word id="drag4" draggable="true" onDragStart={drag}>
+              Edinburgh
+            </Word>
+          </DivContainer>
+
+          <DivContainer id="div3Container" onDrop={drop} onDragOver={allowDrop}>
+            <Word id="drag5" draggable="true" onDragStart={drag}>
+              Glasgow
+            </Word>
+          </DivContainer>
+
+          <DivContainer id="div4Container" onDrop={drop} onDragOver={allowDrop}>
+            <Word id="drag1" draggable="true" onDragStart={drag}>
+              John o'Groats
+            </Word>
+          </DivContainer>
+
+          <DivContainer id="div5Container" onDrop={drop} onDragOver={allowDrop}>
+            <Word id="drag2" draggable="true" onDragStart={drag}>
+              Aberdeen
+            </Word>
+          </DivContainer>
         </StartBlock>
 
         <EndBlock>
@@ -108,9 +136,7 @@ const QuizDragDrop = () => {
           <Place id="drop4" onDrop={drop} onDragOver={allowDrop}></Place>
           <Place id="drop5" onDrop={drop} onDragOver={allowDrop}></Place>
         </EndBlock>
-   
       </QuizContainer>
-
     </>
   );
 };
@@ -192,13 +218,12 @@ const QuizTitle = styled.h1`
   width: 50%;
 `;
 
-
 const Instructions = styled.h3`
-    color: darkblue;
-    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-    font-size: 1.5vw;
-    margin-top: 2vw;
-    text-align: center;
+  color: darkblue;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  font-size: 1.5vw;
+  margin-top: 2vw;
+  text-align: center;
 `;
 
 const Success = styled.h1`
@@ -215,35 +240,35 @@ const Success = styled.h1`
 `;
 
 const ScoreBox = styled.div`
-    border: solid darkblue;
-    border-radius: 5px;
-    color: red;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-    height: 9vw;
-    margin-left: 85%;
-    margin-top: 3vw;
-    padding: 0.3vw;
-    position: absolute;
-    text-align: center;
-    width: 7vw;
-    z-index: 2;
-`
+  border: solid darkblue;
+  border-radius: 5px;
+  color: red;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  height: 9vw;
+  margin-left: 85%;
+  margin-top: 3vw;
+  padding: 0.3vw;
+  position: absolute;
+  text-align: center;
+  width: 7vw;
+  z-index: 2;
+`;
 
 const Timer = styled.div`
-    font-size: 1.3vw;
-    height: 2vw;
-`
+  font-size: 1.3vw;
+  height: 2vw;
+`;
 
 const Score = styled.div`
-    font-size: 1.3vw;
-    height: 2vw;
-`
+  font-size: 1.3vw;
+  height: 2vw;
+`;
 
 const Paragraph = styled.p`
-    color: black;
-    font-size: 1vw;
-    height: 1vw;
-    margin-bottom: 1vw;
-`
+  color: black;
+  font-size: 1vw;
+  height: 1vw;
+  margin-bottom: 1vw;
+`;
 
 export default QuizDragDrop;

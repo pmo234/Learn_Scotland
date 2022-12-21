@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import Header from "./Header";
+import Header from "./Navbar";
 import "./MultipleChoice.css";
 import { Canvas } from "@react-three/fiber";
 import { useLocation } from "react-router-dom";
