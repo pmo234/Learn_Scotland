@@ -316,6 +316,4 @@ const Body = styled.body`
 `
 
 
-
-
 export default QuizSingle;
