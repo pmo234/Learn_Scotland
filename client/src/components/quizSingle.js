@@ -149,6 +149,7 @@ const QuizSingle = (props) => {
   return (
     <>
       <Header />
+      <Body>
       <QuizTitle>How Many Questions!</QuizTitle>
 
       <ScoreBox>
@@ -182,6 +183,7 @@ const QuizSingle = (props) => {
         <DisplayScore id="displayScore">0</DisplayScore>
         {/* <p>{answer}</p> */}
       </QuizContainer>
+      </Body>
     </>
   );
 };
@@ -203,9 +205,9 @@ const QuizTitle = styled.h1`
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   height: 4vw;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 2vw;
-  padding-top: 0.5vw;
+  margin-top: 0%;
+  margin-bottom: 6vw;
+  padding-top: 3vw;
   text-align: center;
   width: 50%;
 `;
@@ -304,8 +306,13 @@ const Button = styled.button`
   height: 3vw;
   padding: 2px;
   width: 5vw;
-
 `;
+
+const Body = styled.body`
+  background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
+  height: 100vh;
+`
+
 
 
 

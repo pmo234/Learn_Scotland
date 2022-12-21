@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./Navbar";
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
 const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
@@ -42,6 +44,7 @@ export default function Forum(props) {
   return (
     <div>
       <Header currUser={userName} />
+      <Body>
       <title>Forum</title>
       <h1>
         Welcome to the Forum {userName}. Here you can upload your own history of
@@ -69,6 +72,15 @@ export default function Forum(props) {
           Submit
         </button>
       </form>
+      </Body>
     </div>
+
   );
 }
+
+
+const Body = styled.body`
+  background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
+  height: 100vh;
+`
+
