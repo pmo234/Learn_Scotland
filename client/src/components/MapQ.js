@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Navbar.js";
+import { redirect } from "react-router-dom";
 import {
   CircleMarker,
   MapContainer,
@@ -21,6 +22,7 @@ const Map = (props) => {
   const [user, setUser] = useState(null);
   
   useEffect(() => {
+    getQuestions()
     getUsers();
     if (users.length !== 0){
       console.log(users[users.length - 1])
@@ -142,12 +144,12 @@ const Map = (props) => {
     <>
       <Header />
       <p>{score} out of 5</p>
-      <button
-        className="bg-blue-900 rounded py-1 px-2 text-white "
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
+          <button
+            className="bg-blue-900 rounded py-1 px-2 text-white "
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
     </>
   );
 };
