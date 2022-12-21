@@ -15,6 +15,11 @@ const LandingPage = (props) => {
   const handleSubmit = (e) => {
     const formData = {
       name: e.target.nameInput.value,
+      score1: null,
+      score2: null,
+      score3: null,
+      score4: null,
+      comments: [],
     };
     postUser(formData);
     e.preventDefault();

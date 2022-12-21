@@ -7,14 +7,16 @@ import {
   TileLayer,
   useMapEvents,
 } from "react-leaflet";
+const userURL = "http://localhost:9000/api/users/";
 
-const Map = () => {
+const Map = (props) => {
   const [position, setPosition] = useState(null);
   const [correct, setCorrect] = useState(null);
   const [questions, setQuestions] = useState(null);
   const [counter, setCounter] = useState(0);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(null);
+  const user = props?.users[props.users.length - 1];
 
   const getQuestions = () => {
     return fetch("http://localhost:9000/api/mapquestions").then((response) =>
@@ -25,6 +27,22 @@ const Map = () => {
   useEffect(() => {
     getQuestions();
   }, []);
+
+  const postScore = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      score4: score,
+    };
+    postScore(user._id, formData);
+  };
 
   const nextQ = () => {
     const tempCounter = counter;
@@ -113,6 +131,12 @@ const Map = () => {
     <>
       <Header />
       <p>{score} out of 5</p>
+      <button
+        className="bg-purple-500 rounded py-1 px-2 text-white "
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
     </>
   );
 };

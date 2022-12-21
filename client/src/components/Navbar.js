@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Header = (props) => {
-  console.log(props)
+  console.log(props);
   return (
     <HeaderContainer>
       <HeaderOne>
@@ -16,6 +16,9 @@ const Header = (props) => {
           </List>
           <List>
             <A href="/multiplechoice">Multiple Choice Quiz</A>
+          </List>
+          <List>
+            <A href="/mapquiz">Map Quiz</A>
           </List>
           <List>
             <A href="/singlechoice">Single choice Quiz</A>
