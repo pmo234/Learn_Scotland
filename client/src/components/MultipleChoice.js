@@ -28,6 +28,8 @@ const MultipleChoice = () => {
   const [answered, setAnswered] = useState(null);
   const [hint, setHint] = useState(null);
   const ref = useRef();
+  const [scoreContainer, setScoreContainer] = useState("scoreContainer hide");
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -143,6 +145,7 @@ const MultipleChoice = () => {
   };
   const handleFinish = () => {
     setContainer("container hide");
+    setScoreContainer("scoreContainer");
   };
   const reset = () => {
     // clearTimeout(timer);
@@ -164,13 +167,14 @@ const MultipleChoice = () => {
     return (
       <>
         <div key={index}>
-          <div className="product-canvas">
-            <Canvas>
+          {/* <div className="product-canvas"> */}
+          <img src={question.image} className="image" />
+          {/* <Canvas>
               <mesh ref={ref}>
                 <boxGeometry attach="geometry" args={[2, 2, 2]} />
               </mesh>
-            </Canvas>
-          </div>
+            </Canvas> */}
+          {/* </div> */}
           {/* {answered && question.image2 ? (
             <div className="img">
               <img src={question.image} />
@@ -184,6 +188,7 @@ const MultipleChoice = () => {
               type="button"
               className={resultButton1Class}
               // class="btn correct"
+              disabled={toggle}
               onClick={handleAnswerChange}
               value={question.answer}
             >
@@ -197,6 +202,7 @@ const MultipleChoice = () => {
               // class="btn"
               className={resultButton2Class}
               // className={resultButtonClass}
+              disabled={toggle}
               onClick={handleAnswerChange}
               value={question.false1}
             >
@@ -209,6 +215,7 @@ const MultipleChoice = () => {
               type="button"
               className={resultButton3Class}
               onClick={handleAnswerChange}
+              disabled={toggle}
               value={question.false2}
             >
               {toggle && <p>&#10060;</p>}
@@ -219,6 +226,7 @@ const MultipleChoice = () => {
             <button
               type="button"
               className={resultButton4Class}
+              disabled={toggle}
               onClick={handleAnswerChange}
               value={question.false3}
             >
@@ -285,7 +293,14 @@ const MultipleChoice = () => {
             Start
           </button>
         </div>
-        {/* <div className={scoreContainer}></div> */}
+        <div className={scoreContainer}>
+          <h2>Congratulations</h2>
+          <p> {`{user} your score is ${score}`}</p>
+
+          <a href="/home" className="next-btn btnMenu">
+            Leader board
+          </a>
+        </div>
       </div>
     </>
   );
