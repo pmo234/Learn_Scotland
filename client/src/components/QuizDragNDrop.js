@@ -230,14 +230,14 @@ const Instructions = styled.h3`
 `;
 
 const Success = styled.h1`
-  color: red;
+  color: darkred;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   font-size: 3vw;
   height: 4vw;
   margin: auto;
   margin-top: 0%;
-  margin-bottom: 2vw;
-  padding-top: 0.5vw;
+  margin-bottom: 6vw;
+  padding-top: 3vw;
   text-align: center;
   width: 50%;
 `;
