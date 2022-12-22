@@ -6,7 +6,7 @@ import styled from "styled-components";
 const userURL = "http://localhost:9000/api/users/";
 
 export default function Forum(props) {
-  const [userName, setUserName] = useState(props.currUser);
+  const [userName, setUserName] = useState([]);
   const [users, setUsers] = useState(props.users);
   const [newC, setNewC] = useState(false);
 
@@ -17,7 +17,7 @@ export default function Forum(props) {
       headers: { "Content-Type": "application/json" },
     }).then((res) => res.json());
   };
-
+  // console.log(users)
   const commentList = users.map((user, index) => {
     return user.comments.length > 0 ? (
       <div className="flex gap-4">
@@ -30,19 +30,26 @@ export default function Forum(props) {
       </div>
     ) : null;
   });
-
+  
   const handleSubmit = (event) => {
+    console.log(event.target[0].value);
+    console.log(users[users.length-1].comments)
     event.preventDefault();
     const newComments = users[users.length - 1].comments.push(
       event.target[0].value
     );
     const changedC = !newC;
     const formData = {
-      comments: newComments,
+      comments: newComments1,
     };
     postComment(users[users.length - 1]._id, formData);
     setNewC(changedC);
   };
+  
+  useEffect(()=>{
+    setUsers(users)
+    console.log(props.users)
+  },[users])
 
   return (
     <div>
