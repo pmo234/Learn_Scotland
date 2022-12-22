@@ -87,12 +87,6 @@ const QuizDragDrop = () => {
       ) : (
         <QuizTitle>Drag and Drop!</QuizTitle>
       )}
-      <ScoreBox>
-        <Timer>Timer</Timer>
-        <Paragraph>Time here</Paragraph>
-        <Score>Score</Score>
-        <Paragraph>Score here</Paragraph>
-      </ScoreBox>
       <QuizContainer id="quizContainer">
         <Instructions>
           Put Scottish place names in order from most northern to most southern.
@@ -175,7 +169,7 @@ const Word = styled.div`
   border-color: darkblue;
   border-radius: 5px;
   border-width: 0.25vw;
-  font-family: sans-serif;
+  font-family: monospace;
   font-size: 1.5vw;
   padding-top: 1px;
   text-align: center;
@@ -210,7 +204,7 @@ const QuizContainer = styled.section`
 
 const QuizTitle = styled.h1`
   color: darkblue;
-  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  font-family: monospace;
   font-size: 3vw;
   height: 4vw;
   margin: auto;
@@ -223,7 +217,7 @@ const QuizTitle = styled.h1`
 
 const Instructions = styled.h3`
   color: darkblue;
-  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  font-family: monospace;
   font-size: 1.5vw;
   margin-top: 2vw;
   text-align: center;
@@ -247,7 +241,7 @@ const ScoreBox = styled.div`
   border: solid darkblue;
   border-radius: 5px;
   color: red;
-  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  font-family: monospace;
   height: 9vw;
   margin-left: 85%;
   margin-top: 3vw;

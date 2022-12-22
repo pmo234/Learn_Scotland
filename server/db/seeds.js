@@ -24,27 +24,6 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "",
-    question:
-      "It's a fact of life - everyone goes to the toilet, but what type of bend do you find on most modern loos?",
-    answer: "s",
-    false1: "b",
-    false2: "z",
-    false3: "u",
-    info: "Yes, Scots have really thought of everything - we can't poo without thinking of ways to perfect it. Flushing toilets have actually existed in some form for thousands of years - the ancient Stone Age site of Skara Brae on Scotland's Orkney Islands had one. However, it wasn't until 1755 when Scottish mechanic Alexander Cumming developed the 'S bend' - an invention still in use today. Without it life would be a lot smellier",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
-    image: "https://www.nms.ac.uk/media/127235/curator-alison-patterson-with-dunlop-tyre-header.jpg?anchor=center&mode=crop&width=1920&height=800&rnd=132925220670000000",
-    question: "What's the image above?",
-    answer: "tyre",
-    false1: "snake skin",
-    false2: "leather handbag",
-    false3: "road",
-    info: "It's a tyre, like you find on every bike or car, and it was invented by a Scotsman. Yes, John Boyd Dunlop, who was born in Ayrshire gives his name to Dunlop tyres. Dunlop was actually a veterinary surgeon by trade, running a hugely successful practice, but it was his attempts to make pneumatic tyres for his son's tricycle that made him famous. Dunlop's invention was picked up by a group of cyclists, who instantly began winning races and the success of the design quickly spread.",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
     image: "https://i2-prod.dailyrecord.co.uk/incoming/article21336654.ece/ALTERNATES/s615/0_JS203970484.jpg",
     question:
       "This is the Scott monument in Edinburgh, but what was it built to celebrate?",
@@ -78,17 +57,7 @@ db.questions.insertMany([
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {
-    image: "https://golf.com/wp-content/uploads/2022/02/VPM2-1856-Wall.jpg",
-    question: "Say what you see",
-    answer: "Golf club",
-    false1: "Microphone",
-    false2: "Toaster",
-    false3: "Shoe",
-    info: "It's a golf club. The sport was invented in the country, and St Andrews (a city on the east coast) is now known as the home of golf, although Leith may dispute that. There are now 587 courses scattered across the nation.",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
-    image: "https://i.guim.co.uk/img/media/afe2e3719e81e5a5da0d0319d1e31347fb95dcd4/0_78_4616_2771/master/4616.jpg?width=620&quality=45&dpr=2&s=none",
+    image: "./img/tunnock.jpeg",
     question:
       "This is a Tunnock's teacake, a Scottish treat. It is made up of biscuit, chocolate and what else?",
     answer: "Marshmallow",
@@ -108,9 +77,6 @@ db.questions.insertMany([
     false3: "Islay",
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
-
-
-
   {
     image: "https://www.freeworldmaps.net/europe/united-kingdom/scotland/scotland-physical-map.jpg",
     question:
@@ -122,28 +88,6 @@ db.questions.insertMany([
     info: "Yup the Shetland Isles, and they are in fact closer to Oslo in Norway than they are to London. Scotland actually has over 900 islands, of which only about 100 are inhabited.",
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
-//   {
-//     image: "Ben Nevis",
-//     question:
-//       "Scotland's, and in fact the United Kingdom's tallest mountain is Ben Nevis, but whereabouts is it?",
-//     answer: "image1",
-//     false1: "image2",
-//     false2: "image3",
-//     false3: "image4",
-//     info: "Ben Nevis stands 1345m tall, and is the highest point for 700km around. It was once an active volcano, and it's name can be translate as 'venomous mountain'. The summit is reached by over 150,000 hikers a year, and in 1911 the Ford company even drove a car to the top.",
-//     statistics: ["one", "two", "three", "one", "three", "one", "one"],
-//   },
-//   {
-//     image: "can we play song?",
-//     question:
-//       "Scotland's national anthem is 'Flower of Scotland'. Can you name the flower, and what instrument might you expect it to be played on?",
-//     answer: "Thistle and bagpipes",
-//     false1: "Rose and piano",
-//     false2: "Daffodil and harp",
-//     false3: "Orchid and guitar",
-//     info: "Thistles and bagpipes, what could be more Scottish? The songs lyrics refer to the victory of the Scots, led by Robert I, over Edward II of England at the Battle of Bannockburn in 1314",
-//     statistics: ["one", "two", "three", "one", "three", "one", "one"],
-//   },
   {
     image: "https://www.historic-uk.com/wp-content/uploads/2017/04/loch-ness-monster-2800x1440.jpg",
     question:
@@ -164,17 +108,6 @@ db.questions.insertMany([
     false2: "31st October",
     false3: "4th July",
     info: "On Bonfire Night, 5th November, the UK celebrates the failure of the plot to destroy parliament, and kill James I. The plotters were foiled, captured, and convicted, the most famous of which is Guy Fawkes.",
-    statistics: ["one", "two", "three", "one", "three", "one", "one"],
-  },
-  {
-    image: "",
-    question:
-      "Scotland has a gruesome and grizzly facet to it's history. Perhaps one of it's most shocking moments is when Queen Elizabeth I of England ordered the death of her cousin Mary Queen of Scots, but which of these items belonged to her?",
-    answer: "the penecuik jewels image",
-    false1: "",
-    false2: "",
-    false3: "",
-    info: "These are the Penicuik Jewels, that are thought to have belonged to Mary. Mary, although Queen of the Scots, actually spent most of her life either in France or England.",
     statistics: ["one", "two", "three", "one", "three", "one", "one"],
   },
   {

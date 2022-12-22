@@ -2,7 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Gotham Rounded;
+  font-family: monospace;
 }
 
 :root {
@@ -85,11 +85,14 @@
 
 .btn {
   /* padding: 5px 10px; */
-  border: 2px solid hsl(var(--hue), 100%, 30%);
-  background-color: hsl(var(--hue));
+  border: 2px solid white;
+  background-color: rgb(56, 97, 227);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-family: monospace;
+  color: white;
+  height: 45px;
 }
 
 .btnMenu {
@@ -123,8 +126,8 @@
 .next-btn,
 .again-btn {
   font-size: 1.5rem;
-  font-weight: bold;
   padding: 10px 20px;
+  font-family: monospace;
 }
 
 .controls {
@@ -132,6 +135,7 @@
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
+  font-family: monospace;
 }
 
 /* .controls{

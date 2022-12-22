@@ -12,10 +12,15 @@ function App() {
   const [currUser, setCurrUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     getUsers();
   }, []);
+  
+  useEffect(() => {
+    getUsers();
+  }, [firstLoad]);
   
   
   const changeFirst = () => {
@@ -48,7 +53,7 @@ function App() {
                 setCurrUser={setCurrUser}
                 changeFirst={changeFirst}
                 firstLoad={firstLoad}
-                getUsers={getUsers} 
+                getUsers={getUsers}
               />
             }
           />

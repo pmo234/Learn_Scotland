@@ -15,3 +15,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@layer components{
+  .leader_link {
+    @apply text-blue-50 font-mono font-light text-sm hover:font-bold hover:text-base;
+  }
+  
+  .leader_list {
+    @apply font-mono font-thin my-2
+  }
+}

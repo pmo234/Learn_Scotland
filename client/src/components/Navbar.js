@@ -1,36 +1,36 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import TitleWord from "./TitleWord";
 
 const Header = (props) => {
 
   return (
-    <HeaderContainer>
-      <HeaderOne>
+    <HeaderContainer className="bg-blue-900 text-blue-50 flex justify-between border-b-2 border-b-blue-300">
+      <HeaderOne className="ml-6">
         <H1>
-          <A href="/">Learn Scotland</A>
+          <TitleWord/>
         </H1>
       </HeaderOne>
-      <HeaderTwo>
-        <UnorderedList>
+      <HeaderTwo className="flex items-center">
+        <UnorderedList className="flex flex-row">
           <List>
-            <Link className="text-white" to="/">Leaderboards</Link>
+            <Link className="leader_link" to="/">Leaderboards</Link>
           </List>
           <List>
-            <Link className="text-white" to="/multiplechoice">Multiple Choice Quiz</Link>
+            <Link className="leader_link" to="/multiplechoice">Multi Choice Quiz</Link>
           </List>
           <List>
-            <Link className="text-white" to="/mapquiz">Map Quiz</Link>
+            <Link className="leader_link" to="/mapquiz">Map Quiz</Link>
           </List>
           <List>
-            <Link className="text-white" to="/singlechoice">Single choice Quiz</Link>
+            <Link className="leader_link" to="/singlechoice">Input Quiz</Link>
           </List>
           <List>
-            <Link className="text-white" to="/dragndrop">Drag n Drop</Link>
+            <Link className="leader_link" to="/dragndrop">Drag n Drop</Link>
           </List>
           <List>
-            <Link className="text-white" to="/forum">Forum</Link>
+            <Link className="leader_link" to="/forum">Forum</Link>
           </List>
-          <h1 className="text-white">{props.currUser}</h1>
         </UnorderedList>
       </HeaderTwo>
     </HeaderContainer>
@@ -38,45 +38,35 @@ const Header = (props) => {
 };
 
 const HeaderContainer = styled.header`
-  height: 6.3vw;
-  background-color: darkblue;
+  height: 5vw;
 `;
 
 const HeaderOne = styled.div`
-  float: left;
   height: 100%;
-  width: 25%;
 `;
 
 const HeaderTwo = styled.div`
-  float: left;
   margin-bottom: 0;
-  width: 70%;
 `;
 
 const H1 = styled.h1`
-  color: white;
+  colort-bluetext-blue-50;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   font-size: 3vw;
   margin-top: 0;
-  padding-top: 5%;
-  padding-left: 10%;
 `;
 
 const UnorderedList = styled.ul`
-  padding-top: 1.9%;
   list-style: none;
 `;
 
 const List = styled.li`
-  height: 100%;
   font-size: 1.4vw;
-  float: left;
   margin-right: 2vw;
 `;
 
 const A = styled.a`
-  color: white;
+  colort-bluetext-blue-50;
   text-decoration: none;
   font-weight: 600;
   &:hover {

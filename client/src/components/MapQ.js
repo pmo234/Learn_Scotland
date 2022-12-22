@@ -20,21 +20,26 @@ const Map = (props) => {
   const [answered, setAnswered] = useState(null);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     getQuestions();
     getUsers();
-    if (users.length !== 0){
-      console.log(users[users.length - 1])
-      setUser(users[users.length - 1])}
+    if (users.length !== 0) {
+      console.log(users[users.length - 1]);
+      setUser(users[users.length - 1]);
+    }
   }, []);
   
+  useEffect(() => {
+    getUsers();
+  }, [users])
+
   const getUsers = () => {
     return fetch(baseURL1)
       .then((res) => res.json())
-          .then((results) => setUsers(results))}
-      console.log(users)
-      
+      .then((results) => setUsers(results));
+  };
+
   const getQuestions = () => {
     return fetch("http://localhost:9000/api/mapquestions").then((response) =>
       response.json().then((data) => setQuestions(data))
@@ -67,8 +72,8 @@ const Map = (props) => {
 
   const questionList = questions?.map((question) => {
     return (
-      <>
-        <Div className="flex m-3 align-middle justify-center ">
+      <div className="flex p-3 bg-gradient-to-tr from-1bg to-2bg h-screen gap-5">
+        <div className="flex">
           <MapContainer
             center={[56.8169, -4.1826]}
             doubleClickZoom={false}
@@ -90,31 +95,49 @@ const Map = (props) => {
             ) : null}
             <LocationMarker />
           </MapContainer>
-        </Div>
-        <Div className="flex align-middle justify-center gap-3 m-3">
-          <img
-            className="w-1/5 border-solid border-blue-900 border-4"
-            src={question.img}
-            alt="tree"
-          />
-          <h3>{question.question}</h3>
-        </Div>
-        {answered ? (
-          <div className="flex m-10 flex-col">
-            <p>{question.info}</p>
-            <div className="flex justify-center gap-10">
-              {correct && position ? <p>Well done</p> : null}
-              {correct === false && position ? <p>Unlucky pal</p> : null}
-              <button
-                className="bg-blue-900 rounded py-1 px-2 text-white "
-                onClick={nextQ}
-              >
-                Next
-              </button>
-            </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex flex-col gap-4 items-center">
+            <img
+              className="w-100 border-solid border-blue-900 border-4"
+              src={question.img}
+              alt="tree"
+            />
+            <h3 className="text-white font-mono">{question.question}</h3>
           </div>
-        ) : null}
-      </>
+          {answered ? (
+            <div className="flex m-10 flex-col items-center gap-4">
+              {correct === false && position ? (
+                <p className="font-mono text-white text-xl">Unlucky pal</p>
+              ) : null}
+              <p className="font-mono text-white ">{question.info}</p>
+              <div className="flex justify-center gap-10">
+                {correct && position ? (
+                  <p className="font-mono text-white text-xl">Well done</p>
+                ) : null}
+                {counter < 4 ? (
+                  <button
+                    className="bg-blue-600 rounded py-2 px-3 text-white font-mono shadow-md shadow-white"
+                    onClick={nextQ}
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <div>
+                    <p>{score} out of 5</p>
+                    <button
+                      className="bg-blue-600 rounded py-2 px-3 text-white font-mono shadow-md shadow-white "
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
     );
   });
 
@@ -135,38 +158,16 @@ const Map = (props) => {
     });
   }
 
-  return questionList && counter < 5 ? (
+  return questionList ? (
     <>
       <Header />
-      <Body>
-
       {questionList[counter]}
-      </Body>
     </>
-  ) : (
-    <>
-      <Header />
-      <Body>
-      <p>{score} out of 5</p>
-      <button
-        className="bg-blue-900 rounded py-1 px-2 text-white "
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
-
-    </Body>
-    </>
-  );
+  ) : null;
 };
 
 const Body = styled.body`
   background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
   height: 100vh;
 `;
-
-const Div = styled.div`
-  margin-top: 0;
-`
-
 export default Map;

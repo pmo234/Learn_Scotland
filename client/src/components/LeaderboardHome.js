@@ -12,37 +12,36 @@ const Leaderboard = (props) => {
   const [inOrder3, setInOrder3] = useState([]);
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
-  
 
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
       if (user.score1)
-      return {
-        name: user.name,
-        score1: user.score1,
-      }}
-    );
+        return {
+          name: user.name,
+          score1: user.score1,
+        };
+    });
 
     const newSortedList2 = props.users.map((user) => {
       if (user.score2)
-      return {
-        name: user.name,
-        score2: user.score2,
-      };
+        return {
+          name: user.name,
+          score2: user.score2,
+        };
     });
     const newSortedList3 = props.users.map((user) => {
       if (user.score3)
-      return {
-        name: user.name,
-        score3: user.score3,
-      };
+        return {
+          name: user.name,
+          score3: user.score3,
+        };
     });
     const newSortedList4 = props.users.map((user) => {
       if (user.score4)
-      return {
-        name: user.name,
-        score4: user.score4,
-      };
+        return {
+          name: user.name,
+          score4: user.score4,
+        };
     });
 
     setListToSort(newSortedList);
@@ -89,82 +88,99 @@ const Leaderboard = (props) => {
 
   const displayLeaderboard = inOrder.map((user, index) => {
     return user ? (
-      <UnorderList>
+      <UnorderList className="flex flex-col">
         <li key={index} className="leaderboard-item">
-          <p>
-            {placeIndicator[index]} place {user.name}
+          <p className="leader_list">
+            {placeIndicator[index]} place: <br />
+            {user.name} with {user.score1}
           </p>
-          <p>{user.score1}</p>
         </li>
       </UnorderList>
-    ):null
+    ) : null;
   });
   const displayLeaderboard2 = inOrder2.map((user, index) => {
     return user ? (
       <UnorderList>
         <li key={index} className="leaderboard-item">
-          <p>
-            {placeIndicator[index]} place {user.name}
+          <p className="leader_list">
+            {placeIndicator[index]} place: <br />
+            {user.name} with {user.score2}
           </p>
-          <p>{user.score2}</p>
         </li>
       </UnorderList>
-    ):null
+    ) : null;
   });
   const displayLeaderboard3 = inOrder3.map((user, index) => {
-    return user ?(
+    return user ? (
       <UnorderList>
         <li key={index} className="leaderboard-item">
-          <p>
-            {placeIndicator[index]} place {user.name}
+          <p className="leader_list">
+            {placeIndicator[index]} place: <br />
+            {user.name} with {user.score3}
           </p>
-          <p>{user.score3}</p>
         </li>
       </UnorderList>
-    ):null
+    ) : null;
   });
   const displayLeaderboard4 = inOrder4.map((user, index) => {
-    return user ?(
+    return user ? (
       <UnorderList>
         <li key={index} className="leaderboard-item">
-          <p>
-            {placeIndicator[index]} place {user.name}
+          <p className="leader_list">
+            {placeIndicator[index]} place: <br />
+            {user.name} with {user.score4}
           </p>
-          <p>{user.score4}</p>
         </li>
       </UnorderList>
-    ):null
+    ) : null;
   });
 
   return (
     <Background>
-    <QuizContainer>
-
-      <Div>
-        <Link to="/singlechoice">
-          <QuizLink>Take Quiz 1</QuizLink>
-        <h1>Quiz 1 Leaderboard {displayLeaderboard}</h1>
-        </Link>
-      </Div>
-      <Div>
-        <Link to="/multiplechoice">
-          <QuizLink>Take Quiz 2</QuizLink>
-        <h1>Quiz 2 Leaderboard {displayLeaderboard2}</h1>
-        </Link>
-      </Div>
-      <Div>
-        <Link to="/dragndrop">
-          <QuizLink>Take Quiz 3</QuizLink>
-        <h1>Quiz 3 Leaderboard {displayLeaderboard3}</h1>
-        </Link>
-      </Div>
-      <Div>
-        <QuizLink>Take Quiz 4</QuizLink>
-        <h1>Quiz 4 Leaderboard {displayLeaderboard4}</h1>
-      </Div>
-
-    </QuizContainer>
-
+      <QuizContainer className="flex gap-10">
+        <Div>
+          <Link to="/singlechoice">
+            <QuizLink className="bg-blue-700 text-blue-50 font-mono shadow-lg shadow-gray-700">
+              Take Input Quiz
+            </QuizLink>
+            <p className="bg-blue-500 rounded text-blue-50 py-3 border-2">
+              <p className="text-l font-bold font-mono">Quiz 1 Leaderboard</p>{" "}
+              {displayLeaderboard}
+            </p>
+          </Link>
+        </Div>
+        <Div>
+          <Link to="/multiplechoice">
+            <QuizLink className="bg-blue-700 text-blue-50 font-mono shadow-lg shadow-gray-700">
+              Take Multi Quiz
+            </QuizLink>
+            <p className="bg-blue-500 rounded text-blue-50 py-3 border-2">
+              <p className="text-l font-bold font-mono">Quiz 2 Leaderboard</p>{" "}
+              {displayLeaderboard2}
+            </p>
+          </Link>
+        </Div>
+        <Div>
+          <Link to="/dragndrop">
+            <QuizLink className="bg-blue-700 text-blue-50 font-mono shadow-lg shadow-gray-700">
+              Take DnD Quiz
+            </QuizLink>
+            <p className="bg-blue-500 rounded text-blue-50 py-3 border-2">
+              <p className="text-l font-bold font-mono">Quiz 3 Leaderboard</p>{" "}
+              {displayLeaderboard3}
+            </p>
+          </Link>
+        </Div>
+        <Div>
+          <QuizLink className="bg-blue-700 text-blue-50 font-mono shadow-lg shadow-gray-700">
+            Take Map Quiz
+          </QuizLink>
+          <p className="bg-blue-500 rounded text-blue-50 py-3 border-2">
+            <p className="text-l font-bold font-mono">Quiz 4 Leaderboard</p>{" "}
+            {displayLeaderboard4}
+          </p>
+        </Div>
+      </QuizContainer>
     </Background>
   );
 };
@@ -185,15 +201,13 @@ const QuizLink = styled.button`
   height: 4.3vw;
   width: 16vw;
   border-radius: 5px;
-  background-color: blue;
   margin-bottom: 4vh;
-  font-family: Arial, Helvetica, sans-serif;
 `;
 
 const Background = styled.body`
   background: linear-gradient(to right top, hsl(200, 100%, 20%), #6cd);
   height: 100vh;
-`
+`;
 
 const Div = styled.div`
   margin-top: 3vw;
@@ -201,11 +215,6 @@ const Div = styled.div`
   float: left;
 `;
 
-
 const UnorderList = styled.ul`
   list-style: none;
 `;
-
-
-
-

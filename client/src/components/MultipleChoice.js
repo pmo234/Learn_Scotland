@@ -31,24 +31,25 @@ const MultipleChoice = (props) => {
   const [hint, setHint] = useState(null);
   const ref = useRef();
   const [scoreContainer, setScoreContainer] = useState("scoreContainer hide");
-  const [user,setUser] = useState(props?.users[props.users.length-1])
+  const [user, setUser] = useState(props?.users[props.users.length - 1]);
   const [users, setUsers] = useState([]);
-  console.log(props)
-  console.log(props.currUser)
+  console.log(props);
+  console.log(props.currUser);
 
   useEffect(() => {
     getUsers();
   }, []);
-  
+
   const getUsers = () => {
     return fetch(baseURL1)
       .then((res) => res.json())
-      .then((results) => setUsers(results));}
-  
+      .then((results) => setUsers(results));
+  };
+
   useEffect(() => {
     getQuestions();
-    setUser(props?.users[props.users.length-1])
-    console.log(user)
+    setUser(props?.users[props.users.length - 1]);
+    console.log(user);
   }, []);
 
   const getQuestions = () => {
@@ -61,17 +62,11 @@ const MultipleChoice = (props) => {
       getPercent();
     }
   }, [questions]);
-  // useEffect(() => {
-  //   if (questions) {
-  //     getPercent();
-  //   }
-  // }, []);
 
   const getPercent = () => {
     setResultStat(questions[questionNumber].statistics);
     setTotalLen(questions[questionNumber].statistics.length);
     setQuestionLen(questions.length);
-    // const totalLen = questions[questionNumber].statistics.length;
     const count = {};
     resultStat.forEach((element) => {
       count[element] = (count[element] || 0) + 1;
@@ -189,16 +184,16 @@ const MultipleChoice = (props) => {
     const formData = {
       score3: score,
     };
-    console.log(users[users.length] - 1)
+    console.log(users[users.length] - 1);
     postScore(users[users.length - 1]._id, formData);
   };
 
   const questionsList = questions.map((question, index) => {
     return (
       <>
-        <div key={index}>
+        <div className="flex flex-col" key={index}>
           {/* <div className="product-canvas"> */}
-          <img src={question.image} className="image" />
+          <img className="h-96" src={question.image} alt="our question" />
           {/* <Canvas>
               <mesh ref={ref}>
                 <boxGeometry attach="geometry" args={[2, 2, 2]} />
@@ -212,7 +207,7 @@ const MultipleChoice = (props) => {
           ) : (
             <img src={question.image2} alt="Img not loaded" />
           )} */}
-          <div>{question.question}</div>
+          <div className="font-mono text-white">{question.question}</div>
           <div className="btn-grid">
             <button
               type="button"
@@ -330,14 +325,9 @@ const MultipleChoice = (props) => {
           {/* <a href="/leaderboard" className="next-btn btnMenu">
             Leader board
           </a> */}
-          <button
-        className="next-btn btnMenu"
-        onClick={handleSubmit}
-        
-      >
-        Leader board
-      </button>
-          
+          <button className="next-btn btnMenu" onClick={handleSubmit}>
+            Leader board
+          </button>
         </div>
       </div>
     </>
