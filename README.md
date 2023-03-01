@@ -48,7 +48,7 @@ These are the main technologies we used to contruct the project.
 
 * ![stats]
 * ![React]
-* ![React Router
+* ![React Router]
 * ![NPM]
 * ![HTML]
 * ![JavaScript]
@@ -108,6 +108,7 @@ Here are some of the things we've found difficult:
 ## Running a Learn Scotland demonstration
 
 Run Locally
+
 Clone the project and go to the project directory:
 
   cd Learn_Scotland
