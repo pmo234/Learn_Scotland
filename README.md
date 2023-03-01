@@ -140,7 +140,7 @@ The application is running on port 3000 so visit http://localhost:3000/ to try o
 [PostgreSQL]:https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
 [IntelliJ_IDEA]: https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white
 [ReactNative]:https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[stats]:https://img.shields.io/tokei/lines/github/bsmith/ShakeIt
+[stats]:https://img.shields.io/tokei/lines/github/pmo234/Learn_Scotland
 
 [Tailwind]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
 [JavaScript]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
