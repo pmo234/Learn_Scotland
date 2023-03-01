@@ -110,21 +110,22 @@ Here are some of the things we've found difficult:
 Run Locally
 
 Clone the project and go to the project directory:
-
+```
   cd Learn_Scotland
+  ```
 Install dependencies in both the client and the server folders:
 
 ```
 cd client
 npm install
-```
-```
+
 cd server
 npm install
 ```
 Seed the database. Within the server folder:
-
+```
 npm run seeds
+```
 Run express (leave running in a terminal window). Within the server folder:
 ```
 npm run server:dev
