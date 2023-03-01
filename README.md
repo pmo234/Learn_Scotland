@@ -111,7 +111,7 @@ Run Locally
 
 Clone the project and go to the project directory:
 ```
-  cd Learn_Scotland
+cd Learn_Scotland
   ```
 Install dependencies in both the client and the server folders:
 
