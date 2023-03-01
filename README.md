@@ -114,20 +114,25 @@ Clone the project and go to the project directory:
   cd Learn_Scotland
 Install dependencies in both the client and the server folders:
 
+```
 cd client
 npm install
-
+```
+```
 cd server
 npm install
+```
 Seed the database. Within the server folder:
 
 npm run seeds
 Run express (leave running in a terminal window). Within the server folder:
-
+```
 npm run server:dev
+```
 Run React development environment (leave running in a terminal window). Within client folder:
-
+```
 npm start
+```
 The application is running on port 3000 so visit http://localhost:3000/ to try out!
 
 
