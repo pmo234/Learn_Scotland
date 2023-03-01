@@ -18,8 +18,8 @@ A full stack React website that allows users to login, see a score rationg and b
 * [Brief](#brief)
 * [Challenges](#challenges)
 * [Running a ShakeIt demonstration](#running-a-shakeit-demonstration)
-* [Example Data](#example-data)
-* [Test](#test)
+* [Running a Learn Scotland demonstration](#running-a-learn-scotland-demonstration)
+
 
 <br>
 
