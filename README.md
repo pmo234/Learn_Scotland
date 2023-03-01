@@ -1,3 +1,4 @@
+![Screenshot 2022-12-21 at 20 00 00](https://user-images.githubusercontent.com/68015812/222269171-043b02d9-fb88-4ea9-917d-f149279cb073.png)
 # Learn_Scotland: Learning scotland website
 <b> Contributors: [Struan](https://github.com/stustr), [Peter](https://github.com/pmo234), 
 [David](https://github.com/dvdjms) & [Mikhail](https://github.com/MikhailGorbunov) </b>
