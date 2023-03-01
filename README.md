@@ -4,8 +4,7 @@
 [David](https://github.com/dvdjms) & [Mikhail](https://github.com/MikhailGorbunov) </b>
 
 
-
-A full stack React website that allows users to login, see a score rationg and be to play 4 different quizes about history of edinburgh
+A full-stack React website that allows users to log in, see a score rating and be to play 4 different quizzes about the history of Edinburgh.
 
 <!-- 🚧 <b> NB: This is app has reached its MVP, but is still under construction</b> 🚧 -->
 
@@ -26,9 +25,9 @@ A full stack React website that allows users to login, see a score rationg and b
 
 
 
-Since Covid-19 many entertaining industries are getting a shortage in amount of users. Based on an [open source statistics](https://www.statista.com/statistics/586826/national-museum-of-scotland-visitor-numbers-united-kingdom-uk/)(figure below) National museum of Scotland
-is not excluded. Our group has volunteered to contribute to the popularisation of Scotland and the National Museum of Scotland and went for the trip to investigate
-how we can improve visitor's expirienced. The museum has interactive screens which display different quiuzes based on historical object within the museum. Therefore,
+Since Covid-19 many entertaining industries are getting a shortage in the number of users. Based on an [open source statistics](https://www.statista.com/statistics/586826/national-museum-of-scotland-visitor-numbers-united-kingdom-uk/)(figure below) The national museum of Scotland
+is not excluded. Our group has volunteered to contribute to the popularisation of Scotland and the National Museum of Scotland and went on the trip to investigate
+how we can improve visitors' experience. The museum has interactive screens which display different quizzes based on a historical object within the museum. Therefore,
 we have decided to make an interactive app/website that can be possibly used within the museum.
 
 ![Screenshot 2022-12-21 at 20 00 00](https://user-images.githubusercontent.com/68015812/222269171-043b02d9-fb88-4ea9-917d-f149279cb073.png)
@@ -45,7 +44,7 @@ a video
 
 ## Technologies
 
-These are the main technologies we used to contruct the project.
+These are the main technologies we used to construct the project.
 
 * ![stats]
 * ![React]
@@ -63,7 +62,7 @@ These are the main technologies we used to contruct the project.
 
 ## Brief
 
-Our initial brief was extremely ambitious, so as our team. Together by following iterative model (development cycle) we have managed in 5 days to accomplish the following tasks (shown bellow).
+Our initial brief was extremely ambitious, and so as our team. Together by following the iterative model (development cycle), we have managed 5 days to accomplish the following tasks (shown bellow).
 
 **MVP**
 
