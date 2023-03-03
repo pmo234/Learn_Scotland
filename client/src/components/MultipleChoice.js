@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Header from "./Navbar";
 import "./MultipleChoice.css";
 import { Canvas } from "@react-three/fiber";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { OrbitControls, useGLTF } from "@react-three/drei";
 // import Counter from "./Counter.js";
 const MultipleChoice = (props) => {
@@ -33,6 +34,8 @@ const MultipleChoice = (props) => {
   const [scoreContainer, setScoreContainer] = useState("scoreContainer hide");
   const [user, setUser] = useState(props?.users[props.users.length - 1]);
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate()
+  
   console.log(props);
   console.log(props.currUser);
 
@@ -179,13 +182,22 @@ const MultipleChoice = (props) => {
     }).then((res) => res.json());
   };
 
+  // const goToLeaderboard = useCallback(() =>{
+  //   navigate('/')
+  // },[navigate])
+
+ 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
       score3: score,
     };
-    console.log(users[users.length] - 1);
-    postScore(users[users.length - 1]._id, formData);
+    
+    postScore(users[(users.length - 1)]._id, formData);
+
+ 
   };
 
   const questionsList = questions.map((question, index) => {
@@ -221,6 +233,7 @@ const MultipleChoice = (props) => {
               {question.answer}
               {toggle && <p>{percentArray[0]}%</p>}
             </button>
+           
 
             <button
               type="button"
@@ -325,9 +338,12 @@ const MultipleChoice = (props) => {
           {/* <a href="/leaderboard" className="next-btn btnMenu">
             Leader board
           </a> */}
+           
           <button className="next-btn btnMenu" onClick={handleSubmit}>
-            Leader board
+            
+          <Link className="leader_link" to="/">Leaderboard</Link>
           </button>
+             
         </div>
       </div>
     </>

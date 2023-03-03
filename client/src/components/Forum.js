@@ -32,15 +32,16 @@ export default function Forum(props) {
   });
   
   const handleSubmit = (event) => {
-    console.log(event.target[0].value);
-    console.log(users[users.length-1].comments)
+    console.log("users",users)
+    // console.log(event.target[0].value);
+    // console.log(users[users.length-1].comments)
     event.preventDefault();
-    const newComments = users[users.length - 1].comments.push(
+    const newComments = users[(users.length - 1)].comments.push(
       event.target[0].value
     );
     const changedC = !newC;
     const formData = {
-      comments: newComments1,
+      comments: newComments,
     };
     postComment(users[users.length - 1]._id, formData);
     setNewC(changedC);
@@ -52,14 +53,14 @@ export default function Forum(props) {
   },[users])
 
   return (
-    <div>
+    <div className="items-center justify-center align-middle">
       <Header currUser={userName} />
-      <Body className="h-screen">
+      <Body className="h-screen items-center justify-center">
         <h1 className="font-mono text-center py-5 font-bold text-blue-50 text-xl">
           Welcome to the Forum {userName}. Here you can upload your own history
           of Scotland either through your own stories or pictures
         </h1>
-        <div className="flex gap-0">{commentList}</div>
+        <div className="flex flex-col space-y-3 gap-0 items-center w-96 mx-[500px] justify-center">{commentList}</div>
         <div className="flex z-30 pt-6 justify-center">
           <form
             className="flex flex-col w-1/2 items-center"

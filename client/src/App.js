@@ -27,13 +27,6 @@ function App() {
     setFirstLoad(false);
   };
 
-  // ? this is the user that was last added i.e. the current user
-  // useEffect(() => {
-  //   if (users && users[0]) {
-  //     setCurrUser(users[users.length - 1].name);
-  //   }
-  // }, [users2]);
-
   const getUsers = () => {
     return fetch(baseURL1)
       .then((res) => res.json())

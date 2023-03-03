@@ -13,6 +13,8 @@ const Leaderboard = (props) => {
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
 
+  console.log(props.currUser)
+
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
       if (user.score1)
