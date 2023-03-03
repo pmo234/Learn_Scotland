@@ -1,31 +1,53 @@
+
 import React, { useState, useEffect, useRef} from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Navbar";
 
-const QuizDragDrop = () => {
+const QuizDragDrop = (props) => {
+  console.log("props", props)
   const [one, setOne] = useState(0);
   const [two, setTwo] = useState(0);
   const [three, setThree] = useState(0);
   const [four, setFour] = useState(0);
   const [five, setFive] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const [start, setStart] = useState(false);
+  const [score, setScore] = useState(1);
+  const [user, setUser] = useState(props?.users[props.users.length - 1]);
+  const [users, setUsers] = useState([]);
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
-  const [latitudeJohn, setLatitudeJohn] = useState("");
-  const [latitudeAber, setLatitudeAber] = useState("");
-  const [latitudePert, setLatitudePert] = useState("");
-  const [latitudeEdin, setLatitudeEdin] = useState("");
-  const [latitudeGlas, setLatitudeGlas] = useState("");
   const dragElementRef1 = useRef();
   const dragElementRef2 = useRef();
   const dragElementRef3 = useRef();
   const dragElementRef4 = useRef();
   const dragElementRef5 = useRef();
+  const userURL = "http://localhost:9000/api/users/";
+  const baseURL1 = "http://localhost:9000/api/users/";
 
-  
+ 
   useEffect(() => {
     if (one + two + three + four + five === 5) {
       setAnsweredCorrectly(true);
+      setScore(timer)
+      setStart(false)
     }
   }, [one, two, three, four, five]);
+
+
+  useEffect(() => {
+    if (start === true) {
+      timer > 0 && setTimeout(() => setTimer(timer + 1), 1000);
+    }
+  }, [timer, start]);
+
+  const startTimer = () => {
+    setTimer(1);
+    setScore(1);
+    setStart(true);
+    document.getElementById("displayCorrect").innerHTML = ``;
+    document.getElementById("displayScore").innerHTML = "0";
+  };
 
 
   if (answeredCorrectly) {
@@ -34,18 +56,12 @@ const QuizDragDrop = () => {
     dragElementRef3.current.setAttribute('draggable', false);
     dragElementRef4.current.setAttribute('draggable', false);
     dragElementRef5.current.setAttribute('draggable', false);
-
-    // setLatitudeJohn("58.6373° N");
-    // setLatitudeAber("57.1499° N");
-    // setLatitudePert("56.3950° N");
-    // setLatitudeEdin("55.9533° N");
-    // setLatitudeGlas("55.8642° N");
-
     document.getElementById("div1Container").innerHTML = "58.6373° N";
     document.getElementById("div2Container").innerHTML = "57.1499° N";
     document.getElementById("div3Container").innerHTML = "56.3950° N";
     document.getElementById("div4Container").innerHTML = "55.9533° N";
     document.getElementById("div5Container").innerHTML = "55.8642° N";
+
   }
   
 
@@ -99,6 +115,30 @@ const QuizDragDrop = () => {
     }
   }
 
+  setTimeout(function () {
+
+  }, 1000);
+
+  const postScore = (id, payload) => {
+    return fetch(userURL + id, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      score3: score + 1,
+    };
+    console.log("formdata", formData);
+    console.log("User",props.users[props.users.length - 1])
+    postScore(props.users[props.users.length - 1]._id, formData);
+ 
+    props.handleSetChange()
+  };
+
   return (
     <>
       <Header />
@@ -108,6 +148,14 @@ const QuizDragDrop = () => {
       ) : (
         <QuizTitle>Drag and Drop!</QuizTitle>
       )}
+        <ScoreBox className="flex flex-col gap-3">
+          <Timer className="font-mono">Timer</Timer>
+          <Seconds id="timer">{timer}</Seconds>
+          <Button onClick={startTimer}>Start</Button>
+          <Button onClick={handleSubmit}><Link to="/">Leaderboard</Link></Button>
+        </ScoreBox>
+
+
       <QuizContainer id="quizContainer">
         <Instructions>
           Put Scottish place names in order from most northern to most southern.
@@ -257,19 +305,38 @@ const Success = styled.h1`
   width: 50%;
 `;
 
+
+
+
+
+const DisplayCorrect = styled.h1`
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 2vw;
+  height: 5vw;
+  width: 100%;
+`;
+
+const DisplayScore = styled.h3`
+  font-size: 5vw;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  color: darkred;
+  text-align: right;
+  margin-right: 3vw;
+  margin-top: 0;
+  width: 92%;
+`;
+
 const ScoreBox = styled.div`
   background: linear-gradient(to right top, hsl(200, 100%, 80%), #ffffff);
   border: solid darkblue;
   border-radius: 5px;
-  color: red;
-  font-family: monospace;
-  height: 9vw;
+  color: darkred;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   margin-left: 85%;
-  margin-top: 3vw;
   padding: 0.3vw;
   position: absolute;
   text-align: center;
-  width: 7vw;
   z-index: 2;
 `;
 
@@ -277,6 +344,27 @@ const Timer = styled.div`
   font-size: 1.3vw;
   height: 2vw;
 `;
+
+const Seconds = styled.h3`
+  font-size: 2vw;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  color: darkred;
+  text-align: center;
+  margin-right: 3vw;
+  margin-top: 0;
+  margin-bottom: 1vw;
+  width: 92%;
+`;
+
+const Button = styled.button`
+  background-color: #e1ecf0;
+  border-radius: 5px;
+  border: solid darkblue;
+  font-size: 1.5vw;
+  height: 3vw;
+  padding: 2px;
+`;
+
 
 const Score = styled.div`
   font-size: 1.3vw;

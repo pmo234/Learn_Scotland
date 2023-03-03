@@ -18,6 +18,7 @@ const LearnScotlandContainer = (props) => {
         users={props.users}
         currUser={props.currUser}
         setCurrUser={props.setCurrUser}
+        change = {props.change}
 
       />
     </>

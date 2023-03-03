@@ -8,6 +8,7 @@ import {
   TileLayer,
   useMapEvents,
 } from "react-leaflet";
+import { Link } from "react-router-dom";
 const userURL = "http://localhost:9000/api/users/";
 const baseURL1 = "http://localhost:9000/api/users/";
 
@@ -60,6 +61,7 @@ const Map = (props) => {
       score4: score,
     };
     postScore(users[users.length - 1]._id, formData);
+    props.handleSetChange()
   };
 
   const nextQ = () => {
@@ -129,7 +131,7 @@ const Map = (props) => {
                       className="bg-blue-600 rounded py-2 px-3 text-white font-mono shadow-md shadow-white "
                       onClick={handleSubmit}
                     >
-                      Submit
+                      <Link  className="leader_link" to="/">Leaderboard</Link>
                     </button>
                   </div>
                 )}

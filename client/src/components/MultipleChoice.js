@@ -1,17 +1,16 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Header from "./Navbar";
 import "./MultipleChoice.css";
 import { Canvas } from "@react-three/fiber";
-import { useLocation } from "react-router-dom";
-// import { OrbitControls, useGLTF } from "@react-three/drei";
-// import Counter from "./Counter.js";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const MultipleChoice = (props) => {
   const userURL = "http://localhost:9000/api/users/";
   const baseURL1 = "http://localhost:9000/api/users/";
   const location = useLocation();
-  console.log(location.state?.data);
   const [score, setScore] = useState(0);
-  // const [result, setResult] = useState();
+ 
   const [totalLen, setTotalLen] = useState();
   const [questionLen, setQuestionLen] = useState();
   const [resultButton1Class, setResultButton1Class] = useState("btn");
@@ -20,9 +19,9 @@ const MultipleChoice = (props) => {
   const [resultButton4Class, setResultButton4Class] = useState("btn");
   const [startContainer, setStartContainer] = useState("startContainer");
   const [container, setContainer] = useState("container hide");
-  // const [restButtonClass, setRestButtonClass] = useState("unanswered");
+  
   const [resultStat, setResultStat] = useState([]);
-  // const [resultStat2, setResultStat2] = useState([]);
+ 
   const [toggle, setToggle] = useState(false);
   const [percentArray, setPercentArray] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -33,8 +32,7 @@ const MultipleChoice = (props) => {
   const [scoreContainer, setScoreContainer] = useState("scoreContainer hide");
   const [user, setUser] = useState(props?.users[props.users.length - 1]);
   const [users, setUsers] = useState([]);
-  console.log(props);
-  console.log(props.currUser);
+  const navigate = useNavigate()
 
   useEffect(() => {
     getUsers();
@@ -49,7 +47,6 @@ const MultipleChoice = (props) => {
   useEffect(() => {
     getQuestions();
     setUser(props?.users[props.users.length - 1]);
-    console.log(user);
   }, []);
 
   const getQuestions = () => {
@@ -82,7 +79,6 @@ const MultipleChoice = (props) => {
     setAnswered(true);
     const tempScore = score;
     let tempRes;
-    console.log(ev);
     if (ev.target.value !== questions[questionNumber].answer) {
       score <= 0 ? setScore(0) : setScore(tempScore - 1);
       if (ev.target.value === questions[questionNumber].false1) {
@@ -102,9 +98,9 @@ const MultipleChoice = (props) => {
       setResultButton1Class("btn correct");
       setScore(tempScore + 1);
     }
-    // setResult(tempRes);
+    
     setToggle(!toggle);
-    // setResultStat([...questions[questionNumber].statistics, tempRes]);
+
     const tempArray = [...questions[questionNumber].statistics, tempRes];
 
     setResultStat(tempArray);
@@ -121,21 +117,8 @@ const MultipleChoice = (props) => {
     }
     setPercentArray(tempPerArray);
   };
-  // setUserAnsweredquestions({
-  //   ...userAnsweredquestions,
-  //   [ev.target._id]: result,
-  // });
 
-  // setUserAnsweredquestions(([ev.target._id] = result));
 
-  // updateUserRecord({
-  //   userScore: score,
-  //   answeredquestions: userAnsweredquestions,
-  // maybe add how many questions left
-  // add which question is wrong and write for statistics
-  // });
-  //   setResult("");
-  // };
   const handleNextQuestion = () => {
     reset();
     const tempQN = questionNumber;
@@ -153,18 +136,17 @@ const MultipleChoice = (props) => {
   const handleStart = () => {
     setStartContainer("startContainer hide");
     setContainer("container");
-    // startTimer();
+    
   };
   const handleFinish = () => {
     setContainer("container hide");
     setScoreContainer("scoreContainer");
   };
   const reset = () => {
-    // clearTimeout(timer);
-    // setCounter(5);
+    
     setToggle(false);
     setAnswered(false);
-    // startTimer();
+  
     setResultButton1Class("btn");
     setResultButton2Class("btn");
     setResultButton3Class("btn");
@@ -179,13 +161,19 @@ const MultipleChoice = (props) => {
     }).then((res) => res.json());
   };
 
+ 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      score3: score,
+      score2: score,
     };
-    console.log(users[users.length] - 1);
-    postScore(users[users.length - 1]._id, formData);
+    
+    postScore(users[(users.length - 1)]._id, formData);
+    props.handleSetChange()
+
+ 
   };
 
   const questionsList = questions.map((question, index) => {
@@ -194,19 +182,7 @@ const MultipleChoice = (props) => {
         <div className="flex flex-col" key={index}>
           {/* <div className="product-canvas"> */}
           <img className="h-96" src={question.image} alt="our question" />
-          {/* <Canvas>
-              <mesh ref={ref}>
-                <boxGeometry attach="geometry" args={[2, 2, 2]} />
-              </mesh>
-            </Canvas> */}
-          {/* </div> */}
-          {/* {answered && question.image2 ? (
-            <div className="img">
-              <img src={question.image} />
-            </div>
-          ) : (
-            <img src={question.image2} alt="Img not loaded" />
-          )} */}
+          
           <div className="font-mono text-white">{question.question}</div>
           <div className="btn-grid">
             <button
@@ -221,6 +197,7 @@ const MultipleChoice = (props) => {
               {question.answer}
               {toggle && <p>{percentArray[0]}%</p>}
             </button>
+           
 
             <button
               type="button"
@@ -271,12 +248,7 @@ const MultipleChoice = (props) => {
       <Header />
 
       <div className="background">
-        {/* // <div 
-    //   id="ex1"
-    //   className="backgroundContainer"
-    //   onMouseMove={mouseOverContainer}
-    // >
-    //   <div ref={ref} id="ex1-layer" className="background">*/}
+
         <div className={container}>
           <div>{questionsList[questionNumber]}</div>
           <div className="controls">
@@ -290,13 +262,7 @@ const MultipleChoice = (props) => {
             >
               Finish
             </button>
-            {/* <button
-              onClick={handleHint}
-              id="next-btn"
-              className="next-btn btnMenu"
-            >
-              Hint
-            </button> */}
+         
             <button
               onClick={handleNextQuestion}
               id="next-btn"
@@ -310,7 +276,7 @@ const MultipleChoice = (props) => {
               {questionNumber + 1} / {questionLen}
             </p>
 
-            {/* <Counter handleNextQuestion={handleNextQuestion} /> */}
+           
           </div>
         </div>
         <div className={startContainer}>
@@ -320,14 +286,15 @@ const MultipleChoice = (props) => {
         </div>
         <div className={scoreContainer}>
           <h2>Congratulations</h2>
-          <p> {`{user} your score is ${score}`}</p>
+          <p> {`${user.name} your score is ${score}`}</p>
 
-          {/* <a href="/leaderboard" className="next-btn btnMenu">
-            Leader board
-          </a> */}
+         
+           
           <button className="next-btn btnMenu" onClick={handleSubmit}>
-            Leader board
+            
+          <Link className="leader_link" to="/">Leaderboard</Link>
           </button>
+             
         </div>
       </div>
     </>

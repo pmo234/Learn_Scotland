@@ -13,6 +13,8 @@ const Leaderboard = (props) => {
   const [inOrder4, setInOrder4] = useState([]);
   const [allInOrder, setAllInOrder] = useState([]);
 
+
+
   useEffect(() => {
     const newSortedList = props.users.map((user) => {
       if (user.score1)
@@ -44,11 +46,11 @@ const Leaderboard = (props) => {
         };
     });
 
-    setListToSort(newSortedList);
-    setListToSort2(newSortedList2);
-    setListToSort3(newSortedList3);
-    setListToSort4(newSortedList4);
-  }, []);
+    setListToSort([...newSortedList]);
+    setListToSort2([...newSortedList2]);
+    setListToSort3([...newSortedList3]);
+    setListToSort4([...newSortedList4]);
+  }, [, props.users]);
 
   useEffect(() => {
     setInOrder(
@@ -63,14 +65,14 @@ const Leaderboard = (props) => {
     );
     setInOrder3(
       listToSort3.sort((a, b) => {
-        return b.score3 - a.score3;
+        return a.score3 - b.score3;
       })
     );
     setInOrder4(
       listToSort4.sort((a, b) => {
         return b.score4 - a.score4;
       })
-    );
+    )
   }, [listToSort]);
 
   const placeIndicator = [
@@ -187,8 +189,7 @@ const Leaderboard = (props) => {
 export default Leaderboard;
 
 const QuizContainer = styled.div`
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  justify-content: center; */
+ 
   height: 12vw;
   width: 80%;
   display: flex;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Navbar";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const QuizSingle = (props) => {
   const [questionList, setQuestionList] = useState([]);
@@ -126,10 +127,11 @@ const QuizSingle = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      score2: score - 1,
+      score1: score - 1,
     };
-    console.log(users[users.length] - 1);
+    console.log(users);
     postScore(users[users.length - 1]._id, formData);
+    props.handleSetChange()
   };
 
   return (
@@ -142,7 +144,7 @@ const QuizSingle = (props) => {
           <Timer className="font-mono">Timer</Timer>
           <Seconds id="timer">{timer}</Seconds>
           <Button onClick={startTimer}>Start</Button>
-          <Button onClick={handleSubmit}>Leaderboard</Button>
+          <Button onClick={handleSubmit}><Link to="/">Leaderboard</Link></Button>
         </ScoreBox>
 
         <QuizContainer id="quizContainer" className="shadow-2xl shadow-black">
