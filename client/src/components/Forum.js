@@ -33,15 +33,16 @@ export default function Forum(props) {
   
   const handleSubmit = (event) => {
     console.log("users",users)
-    // console.log(event.target[0].value);
-    // console.log(users[users.length-1].comments)
+    console.log("event",event.target[0].value);
+    console.log("comments",users[users.length-1].comments)
     event.preventDefault();
-    const newComments = users[(users.length - 1)].comments.push(
+     users[(users.length - 1)].comments.push(
       event.target[0].value
     );
+   
     const changedC = !newC;
     const formData = {
-      comments: newComments,
+      comments: users[(users.length - 1)].comments,
     };
     postComment(users[users.length - 1]._id, formData);
     setNewC(changedC);
