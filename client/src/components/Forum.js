@@ -17,7 +17,7 @@ export default function Forum(props) {
       headers: { "Content-Type": "application/json" },
     }).then((res) => res.json());
   };
-  // console.log(users)
+  
   const commentList = users.map((user, index) => {
     return user.comments.length > 0 ? (
       <div className="flex gap-4">
@@ -32,17 +32,19 @@ export default function Forum(props) {
   });
   
   const handleSubmit = (event) => {
-    console.log(event.target[0].value);
-    console.log(users[users.length-1].comments)
+    console.log("users",users)
+    console.log("event",event.target[0].value);
+    console.log("comments",users[users.length-1].comments)
     event.preventDefault();
-    const newComments = users[users.length - 1].comments.push(
+     users[(users.length - 1)].comments.push(
       event.target[0].value
     );
-    const changedC = !newC;
+   
     const formData = {
-      comments: newComments1,
+      comments: users[(users.length - 1)].comments,
     };
     postComment(users[users.length - 1]._id, formData);
+    const changedC = !newC;
     setNewC(changedC);
   };
   
@@ -52,14 +54,14 @@ export default function Forum(props) {
   },[users])
 
   return (
-    <div>
+    <div className="">
       <Header currUser={userName} />
-      <Body className="h-screen">
-        <h1 className="font-mono text-center py-5 font-bold text-blue-50 text-xl">
+      <Body className="h-screen flex flex-col items-center ">
+        <h1 className="font-mono text-center py-7 font-bold text-blue-50 text-xl">
           Welcome to the Forum {userName}. Here you can upload your own history
           of Scotland either through your own stories or pictures
         </h1>
-        <div className="flex gap-0">{commentList}</div>
+        <div className="flex flex-col space-y-3 gap-0 items-center min-w-96 max-w-96 justify-center">{commentList}</div>
         <div className="flex z-30 pt-6 justify-center">
           <form
             className="flex flex-col w-1/2 items-center"

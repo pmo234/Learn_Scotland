@@ -17,16 +17,16 @@ const Header = (props) => {
             <Link className="leader_link" to="/">Leaderboards</Link>
           </List>
           <List>
-            <Link className="leader_link" to="/multiplechoice">Multi Choice Quiz</Link>
-          </List>
-          <List>
-            <Link className="leader_link" to="/mapquiz">Map Quiz</Link>
-          </List>
-          <List>
             <Link className="leader_link" to="/singlechoice">Input Quiz</Link>
           </List>
           <List>
+            <Link className="leader_link" to="/multiplechoice">Multi Choice Quiz</Link>
+          </List>
+          <List>
             <Link className="leader_link" to="/dragndrop">Drag n Drop</Link>
+          </List>
+          <List>
+            <Link className="leader_link" to="/mapquiz">Map Quiz</Link>
           </List>
           <List>
             <Link className="leader_link" to="/forum">Forum</Link>
