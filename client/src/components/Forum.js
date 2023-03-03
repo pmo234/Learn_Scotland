@@ -41,6 +41,7 @@ export default function Forum(props) {
     );
    
     const formData = {
+      comments: newComments,
       comments: users[(users.length - 1)].comments,
     };
     postComment(users[users.length - 1]._id, formData);

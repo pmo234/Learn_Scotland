@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useRef} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Navbar";
@@ -16,9 +17,15 @@ const QuizDragDrop = (props) => {
   const [user, setUser] = useState(props?.users[props.users.length - 1]);
   const [users, setUsers] = useState([]);
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
+  const dragElementRef1 = useRef();
+  const dragElementRef2 = useRef();
+  const dragElementRef3 = useRef();
+  const dragElementRef4 = useRef();
+  const dragElementRef5 = useRef();
   const userURL = "http://localhost:9000/api/users/";
   const baseURL1 = "http://localhost:9000/api/users/";
 
+ 
   useEffect(() => {
     if (one + two + three + four + five === 5) {
       setAnsweredCorrectly(true);
@@ -26,6 +33,7 @@ const QuizDragDrop = (props) => {
       setStart(false)
     }
   }, [one, two, three, four, five]);
+
 
   useEffect(() => {
     if (start === true) {
@@ -43,11 +51,11 @@ const QuizDragDrop = (props) => {
 
 
   if (answeredCorrectly) {
-    document.getElementById("drag1").setAttribute("draggable", false);
-    document.getElementById("drag2").setAttribute("draggable", false);
-    document.getElementById("drag3").setAttribute("draggable", false);
-    document.getElementById("drag4").setAttribute("draggable", false);
-    document.getElementById("drag5").setAttribute("draggable", false);
+    dragElementRef1.current.setAttribute('draggable', false);
+    dragElementRef2.current.setAttribute('draggable', false);
+    dragElementRef3.current.setAttribute('draggable', false);
+    dragElementRef4.current.setAttribute('draggable', false);
+    dragElementRef5.current.setAttribute('draggable', false);
     document.getElementById("div1Container").innerHTML = "58.6373° N";
     document.getElementById("div2Container").innerHTML = "57.1499° N";
     document.getElementById("div3Container").innerHTML = "56.3950° N";
@@ -55,16 +63,18 @@ const QuizDragDrop = (props) => {
     document.getElementById("div5Container").innerHTML = "55.8642° N";
 
   }
+  
 
-  function allowDrop(ev) {
-    ev.preventDefault();
+  const allowDrop = (ev) => {
+       ev.preventDefault();
   }
 
-  function drag(ev) {
+
+  const drag = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
   }
 
-  function drop(ev) {
+  const drop = (ev) => {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
@@ -152,32 +162,32 @@ const QuizDragDrop = (props) => {
         </Instructions>
 
         <StartBlock>
-          <DivContainer id="div1Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag3" draggable="true" onDragStart={drag}>
+          <DivContainer id="div1Container" onDrop={drop} onDragOver={allowDrop}>{latitudeJohn}
+            <Word id="drag3" draggable="true" onDragStart={drag} ref={dragElementRef1}>
               Perth
             </Word>
           </DivContainer>
 
-          <DivContainer id="div2Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag4" draggable="true" onDragStart={drag}>
+          <DivContainer id="div2Container" onDrop={drop} onDragOver={allowDrop}>{latitudeAber}
+            <Word id="drag4" draggable="true" onDragStart={drag} ref={dragElementRef2}>
               Edinburgh
             </Word>
           </DivContainer>
 
-          <DivContainer id="div3Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag5" draggable="true" onDragStart={drag}>
+          <DivContainer id="div3Container" onDrop={drop} onDragOver={allowDrop}>{latitudePert}
+            <Word id="drag5" draggable="true" onDragStart={drag} ref={dragElementRef3}>
               Glasgow
             </Word>
           </DivContainer>
 
-          <DivContainer id="div4Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag1" draggable="true" onDragStart={drag}>
+          <DivContainer id="div4Container" onDrop={drop} onDragOver={allowDrop}>{latitudeEdin}
+            <Word id="drag1" draggable="true" onDragStart={drag} ref={dragElementRef4}>
               John o'Groats
             </Word>
           </DivContainer>
 
-          <DivContainer id="div5Container" onDrop={drop} onDragOver={allowDrop}>
-            <Word id="drag2" draggable="true" onDragStart={drag}>
+          <DivContainer id="div5Container" onDrop={drop} onDragOver={allowDrop}>{latitudeGlas}
+            <Word id="drag2" draggable="true" onDragStart={drag} ref={dragElementRef5}>
               Aberdeen
             </Word>
           </DivContainer>
