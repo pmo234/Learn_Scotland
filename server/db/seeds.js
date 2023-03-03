@@ -288,7 +288,7 @@ db.users.insertMany([
         "from":"Belfast",
         "score1":5,
         "score2":0,
-        "score3":5,
+        "score3":25,
         "score4":0,
         "comments":["This is a picture of something a found 0"],
         "image":"This is an image"
@@ -299,7 +299,7 @@ db.users.insertMany([
         "from":"Derby",
         "score1":4,
         "score2":3,
-        "score3":3,
+        "score3":20,
         "score4":4,
         "comments":["This is a picture of something a found 1"],
         "image":"This is an image"
@@ -309,7 +309,7 @@ db.users.insertMany([
         "from":"Wales",
         "score1":1,
         "score2":3,
-        "score3":1,
+        "score3":19,
         "score4":3,
         "comments":["This is a picture of something a found 2"],
         "image":"This is an image"
@@ -319,7 +319,7 @@ db.users.insertMany([
         "from":"Russia",
         "score1":2,
         "score2":2,
-        "score3":2,
+        "score3":22,
         "score4":2,
         "comments":["This is a picture of something a found 3"],
         "image":"This is an image"
@@ -329,7 +329,7 @@ db.users.insertMany([
         "from":"Bonnyrigg",
         "score1":1,
         "score2":1,
-        "score3":1,
+        "score3":15,
         "score4":1,
         "comments":["This is a picture of something a found 5"],
         "image":"This is an image"

@@ -13,14 +13,20 @@ function App() {
   const [users, setUsers] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false)
+  const [change, setChange] = useState(false)
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [, firstLoad, change]);
   
   useEffect(() => {
     getUsers();
-  }, [firstLoad]);
+  }, []);
+
+  const handleSetChange=()=>{
+  const changedState = !change
+  setChange(changedState)
+  }
   
   
   const changeFirst = () => {
@@ -47,25 +53,26 @@ function App() {
                 changeFirst={changeFirst}
                 firstLoad={firstLoad}
                 getUsers={getUsers}
+                change={change}
               />
             }
           />
-          <Route path="/leaderboard" element={<LearnScotlandContainer users={users} currUser={currUser} />}/>
+          <Route path="/leaderboard" element={<LearnScotlandContainer users={users} currUser={currUser} change = {change} />}/>
           <Route
             path="/singlechoice"
-            element={<SingleQuestion users={users} currUser={currUser} />}
+            element={<SingleQuestion users={users} currUser={currUser} handleSetChange = {handleSetChange}/>}
           />
           <Route
             path="/multiplechoice"
-            element={<MultiQuestion users={users} currUser={currUser} setUsers={setUsers} />}
+            element={<MultiQuestion users={users} currUser={currUser} handleSetChange = {handleSetChange} />}
           />
           <Route
             path="/dragndrop"
-            element={<DragNDrop users={users} currUser={currUser} />}
+            element={<DragNDrop users={users} currUser={currUser} setUsers={setUsers} handleSetChange = {handleSetChange} />}
           />
           <Route
             path="/mapquiz"
-            element={<MapQ users={users} currUser={currUser} serUsers={setUsers}/>}
+            element={<MapQ users={users} currUser={currUser} serUsers={setUsers} handleSetChange = {handleSetChange}/>}
           />
           <Route
             path="/forum"

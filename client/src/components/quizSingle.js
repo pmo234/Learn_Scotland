@@ -127,10 +127,11 @@ const QuizSingle = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      score2: score - 1,
+      score1: score - 1,
     };
-    console.log(users[users.length] - 1);
+    console.log(users);
     postScore(users[users.length - 1]._id, formData);
+    props.handleSetChange()
   };
 
   return (

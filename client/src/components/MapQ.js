@@ -61,6 +61,7 @@ const Map = (props) => {
       score4: score,
     };
     postScore(users[users.length - 1]._id, formData);
+    props.handleSetChange()
   };
 
   const nextQ = () => {
