@@ -33,8 +33,7 @@ Since Covid-19 many entertaining industries are getting a shortage in the number
 
 ## Showcase
 
-
-a video 
+https://user-images.githubusercontent.com/60407763/222799748-ed8ebe16-5251-44bf-9205-a95a3bd93b90.mp4
 
 <br>
 
