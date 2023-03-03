@@ -40,7 +40,7 @@ export default function Forum(props) {
     );
     const changedC = !newC;
     const formData = {
-      comments: newComments1,
+      comments: newComments,
     };
     postComment(users[users.length - 1]._id, formData);
     setNewC(changedC);
