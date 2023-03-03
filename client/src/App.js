@@ -12,17 +12,16 @@ function App() {
   const [currUser, setCurrUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     getUsers();
   }, []);
-  
+
   useEffect(() => {
     getUsers();
   }, [firstLoad]);
-  
-  
+
   const changeFirst = () => {
     setFirstLoad(false);
   };
@@ -57,14 +56,25 @@ function App() {
               />
             }
           />
-          <Route path="/leaderboard" element={<LearnScotlandContainer users={users} currUser={currUser} />}/>
+          <Route
+            path="/leaderboard"
+            element={
+              <LearnScotlandContainer users={users} currUser={currUser} />
+            }
+          />
           <Route
             path="/singlechoice"
             element={<SingleQuestion users={users} currUser={currUser} />}
           />
           <Route
             path="/multiplechoice"
-            element={<MultiQuestion users={users} currUser={currUser} setUsers={setUsers} />}
+            element={
+              <MultiQuestion
+                users={users}
+                currUser={currUser}
+                setUsers={setUsers}
+              />
+            }
           />
           <Route
             path="/dragndrop"
@@ -72,12 +82,19 @@ function App() {
           />
           <Route
             path="/mapquiz"
-            element={<MapQ users={users} currUser={currUser} serUsers={setUsers}/>}
+            element={
+              <MapQ users={users} currUser={currUser} serUsers={setUsers} />
+            }
           />
           <Route
             path="/forum"
             element={
-              <Forum users={users} setUsers={setUsers} currUser={currUser} getUsers={getUsers}/>
+              <Forum
+                users={users}
+                setUsers={setUsers}
+                currUser={currUser}
+                getUsers={getUsers}
+              />
             }
           />
         </Routes>

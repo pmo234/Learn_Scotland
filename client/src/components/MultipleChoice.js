@@ -189,6 +189,12 @@ const MultipleChoice = (props) => {
   };
 
   const questionsList = questions.map((question, index) => {
+    const answersArray = [question.answer, question.false1, question.false2, question.false3]
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }
+    const randomisedArray = shuffle(answersArray);
+
     return (
       <>
         <div className="flex flex-col" key={index}>
@@ -215,10 +221,10 @@ const MultipleChoice = (props) => {
               // class="btn correct"
               disabled={toggle}
               onClick={handleAnswerChange}
-              value={question.answer}
+              value={randomisedArray[0]}
             >
               {toggle && <p>&#x2705;</p>}
-              {question.answer}
+              {randomisedArray[0]}
               {toggle && <p>{percentArray[0]}%</p>}
             </button>
 
@@ -229,10 +235,10 @@ const MultipleChoice = (props) => {
               // className={resultButtonClass}
               disabled={toggle}
               onClick={handleAnswerChange}
-              value={question.false1}
+              value={randomisedArray[1]}
             >
               {toggle && <p>&#10060;</p>}
-              {question.false1}
+              {randomisedArray[1]}
               {toggle && <p>{percentArray[1]}%</p>}
             </button>
 
@@ -241,10 +247,10 @@ const MultipleChoice = (props) => {
               className={resultButton3Class}
               onClick={handleAnswerChange}
               disabled={toggle}
-              value={question.false2}
+              value={randomisedArray[2]}
             >
               {toggle && <p>&#10060;</p>}
-              {question.false2}
+              {randomisedArray[2]}
               {toggle && <p>{percentArray[2]}%</p>}
             </button>
 
@@ -253,10 +259,10 @@ const MultipleChoice = (props) => {
               className={resultButton4Class}
               disabled={toggle}
               onClick={handleAnswerChange}
-              value={question.false3}
+              value={randomisedArray[3]}
             >
               {toggle && <p>&#10060;</p>}
-              {question.false3}
+              {randomisedArray[3]}
               {toggle && <p>{percentArray[3]}%</p>}
             </button>
           </div>
