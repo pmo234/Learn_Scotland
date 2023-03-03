@@ -46,7 +46,6 @@ a video
 
 These are the main technologies we used to construct the project.
 
-* ![stats]
 * ![React]
 * ![React Router]
 * ![NPM]
