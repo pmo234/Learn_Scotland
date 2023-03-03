@@ -118,9 +118,9 @@ npm install
 cd server
 npm install
 ```
-Seed the database. Within the server folder:
+Seed the database. Within the server/db folder:
 ```
-npm run seeds
+mongosh < seeds.js
 ```
 Run express (leave running in a terminal window). Within the server folder:
 ```
