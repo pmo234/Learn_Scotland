@@ -4,7 +4,7 @@
 [David](https://github.com/dvdjms) & [Mikhail](https://github.com/MikhailGorbunov) </b>
 
 
-A full-stack React website that allows users to log in, see a score rating and be to play 4 different quizzes about the history of Edinburgh.
+A full-stack React website that allows users to log in, see a score rating and be able to play 4 different quizzes about Scotland.
 
 <!-- 🚧 <b> NB: This is app has reached its MVP, but is still under construction</b> 🚧 -->
 
@@ -25,10 +25,7 @@ A full-stack React website that allows users to log in, see a score rating and b
 
 
 
-Since Covid-19 many entertaining industries are getting a shortage in the number of users. Based on an [open source statistics](https://www.statista.com/statistics/586826/national-museum-of-scotland-visitor-numbers-united-kingdom-uk/)(figure below) The national museum of Scotland
-is not excluded. Our group has volunteered to contribute to the popularisation of Scotland and the National Museum of Scotland and went on the trip to investigate
-how we can improve visitors' experience. The museum has interactive screens which display different quizzes based on a historical object within the museum. Therefore,
-we have decided to make an interactive app/website that can be possibly used within the museum.
+Since Covid-19 many entertaining industries are getting a shortage in the number of users. Based on an [open source statistics](https://www.statista.com/statistics/586826/national-museum-of-scotland-visitor-numbers-united-kingdom-uk/)(figure below) the national museum of Scotland is not exempt from this issue. Our group has volunteered to try and combat this issue. We went on a trip to investigate how we can improve visitors' experience, and found that the museum has interactive screens which display different quizzes based on a historical object. Therefore, we have decided to make an interactive app/website that can be possibly used within the museum.
 
 ![Screenshot 2022-12-21 at 20 00 00](https://user-images.githubusercontent.com/68015812/222269171-043b02d9-fb88-4ea9-917d-f149279cb073.png)
 
@@ -61,7 +58,7 @@ These are the main technologies we used to construct the project.
 
 ## Brief
 
-Our initial brief was extremely ambitious, and so as our team. Together by following the iterative model (development cycle), we have managed 5 days to accomplish the following tasks (shown bellow).
+Our initial brief was extremely ambitious, and so was our team. Together, by following the iterative model (development cycle), we have managed to accomplish the following tasks (shown bellow) in just 5 days!
 
 **MVP**
 
@@ -78,24 +75,24 @@ Our initial brief was extremely ambitious, and so as our team. Together by follo
 Some of the features currently in progress:
 
 - [x] An alternate set of questions that requires the user to input answers
-- [x] Give the forum page extra functionality of comments
+- [] Give the forum page extra functionality of comments
 - [x] Produce questions from MoS objects 
 - [x] Upgrade questions to include APIs/ libraries
 
  Goals 
 
 - [x] Get as close as possible to an efficient app development cycle
-- [ ] Create functions that are out of the scope of our course
+- [x] Create functions that are out of the scope of our course
 
 
 <br>
 
 ## Challenges
 
-Here are some of the things we've found difficult:
+Here are some of the things we've found challenging:
 
 * Learning a new framework while planning & building 
-* Working with a team online and onsite
+* Using a hybrid working method
 * Making login functionality
 * File structuring & naming conventions as the project scaled up in size
 
